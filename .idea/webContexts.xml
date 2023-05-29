@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/web/jsp/01_active.jsp" value="file://$PROJECT_DIR$/web/jsp" />
+        <entry key="file://$PROJECT_DIR$/web/jspEx/01_active.jsp" value="file://$PROJECT_DIR$/web/jspEx" />
+        <entry key="file://$PROJECT_DIR$/web/jspEx/02_hello.jsp" value="file://$PROJECT_DIR$/web/jspEx" />
+        <entry key="file://$PROJECT_DIR$/web/jspEx/12_switch.jsp" value="file://$PROJECT_DIR$/web/jspEx" />
+      </map>
+    </option>
+  </component>
+</project>
