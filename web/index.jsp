@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<title>톰캣 index.jsp</title>
+
 <!--아래 코드는 자바로 되어있는 코드들 표현은 퍼센트로 표현-->
 <%
   java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy");
@@ -19,7 +19,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title><%=request.getServletContext().getServerInfo() %></title>
+  <title>톰캣 index.jsp</title>
   <link href="favicon.ico" rel="icon" type="image/x-icon" />
   <link href="tomcat.css" rel="stylesheet" type="text/css" />
 </head>
