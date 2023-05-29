@@ -6,7 +6,7 @@
 </HEAD>
 <BODY>
 
-<Form Action = "/jsp/request_3.jsp" Method = "post">
+<Form Action = "/web/jspEx/16_request_3.jsp" Method = "post"> <!--request_3.jsp에 값을 전달해줌-->
 
 아이디   : <Input Type = "Text" Name = "strID"> <BR>
 비밀번호 : <Input Type = "PassWord" Name = "strPwd"> <BR><BR>

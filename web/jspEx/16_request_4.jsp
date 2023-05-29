@@ -6,7 +6,7 @@
 </HEAD>
 <BODY>
 
-<Form Action = "/jsp/request_3.jsp" Method = "get">
+<Form Action = "/web/jspEx/16_request_3.jsp" Method = "get">
 
 아이디   : <Input Type = "Text" Name = "strID"> <BR>
 비밀번호 : <Input Type = "PassWord" Name = "strPwd"> <BR><BR>

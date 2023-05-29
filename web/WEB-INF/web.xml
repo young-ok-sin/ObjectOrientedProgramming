@@ -11,5 +11,8 @@
     <description>
         Welcome to Webapp
     </description>
+    <welcome-file-list>
+        <welcome-file>/MainPage.jsp</welcome-file>
+    </welcome-file-list>
 
 </web-app>

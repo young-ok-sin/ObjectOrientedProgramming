@@ -6,7 +6,7 @@
 </HEAD>
 <BODY>
 
-<Form Action = "/jsp/request_8.jsp" Method = "post">
+<Form Action = "/web/jspEx/16_request_8.jsp" Method = "post">
 
 이름   : <Input Type = "Text" Name = "strName"> <BR>
 주소 : <Input Type = "Text" Name = "strAddr"> <BR><BR>

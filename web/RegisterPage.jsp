@@ -11,6 +11,6 @@
     <title>회원가입</title>
 </head>
 <body>
-    회원가입 페이지
+회원가입 페이지
 </body>
 </html>
