@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=euc-kr" %>
-<% request.setCharacterEncoding("euc-kr"); %>
+<% request.setCharacterEncoding("euc-kr"); %> <!--한글 인코딩 해줌! 안해주면 받아온 값들이 한글인 경우 깨짐-->
 
 <HTML>
 <HEAD>
