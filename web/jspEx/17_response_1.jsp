@@ -8,7 +8,7 @@
 
 JSP 환경 설정을 위한 다운로드 페이지 입니다.
 
-<form action = "/jsp/response_2.jsp" method = "get">
+<form action = "/web/jspEx/17_response_2.jsp" method = "get">
 
 <select name = "download">
 	<option selected value="1"> JDK </option>
