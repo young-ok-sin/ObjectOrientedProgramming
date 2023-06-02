@@ -1,6 +1,7 @@
 package JDBC;
 
 import java.sql.*;
+import java.sql.Connection;
 
 
 public class ConnectMyDB{
