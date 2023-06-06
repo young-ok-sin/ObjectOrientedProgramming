@@ -14,11 +14,12 @@
     <%
         String id = request.getParameter("id");
         String pw = request.getParameter("password");
+        String name = request.getParameter("name");
         String phoneNumber = request.getParameter("phoneNumber");
         String age = request.getParameter("age");
         String date = request.getParameter("date");
         String url = "";
-        if(doRegister(id, pw, phoneNumber, age, date)) {
+        if(doRegister(id, pw, name, phoneNumber, age, date)) {
             url = "RegisterSuccess.jsp";
         }
         else {
@@ -29,7 +30,7 @@
 </body>
 </html>
 <%!
-    private boolean doRegister(String id, String pw, String phoneNumber, String age, String date) {
+    private boolean doRegister(String id, String pw, String name, String phoneNumber, String age, String date) {
         //Todo DB에 회원정보 저장하는 작업 수행
         return true;
     }
