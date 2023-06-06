@@ -19,7 +19,10 @@
     connectMyDB.disConnectMyDB();
     out.println("jsp import 테스트 및 DB 연결 문제 해결");
 %>
-메인페이지
+<form action="RegisterPage.jsp">
+    <input type="submit"/>
+    메인페이지
+</form>
 마스터 브랜치 바꿈!!
 </body>
 </html>
