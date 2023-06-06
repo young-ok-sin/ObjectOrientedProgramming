@@ -34,6 +34,9 @@
                 <div class="pw-field">
                     <input type="password" name="password" placeholder="PW">
                 </div>
+                <div class="name-field">
+                    <input type="text" name="name" placeholder="홍길동">
+                </div>
                 <div class="phone-number-filed">
                     <input type="text" name="phoneNumber" placeholder="PhoneNumber">
                 </div>
