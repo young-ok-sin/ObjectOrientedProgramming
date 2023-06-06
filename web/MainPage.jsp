@@ -17,7 +17,7 @@
 <% ConnectMyDB connectMyDB = new ConnectMyDB();
     connectMyDB.insertNotice(new Date(System.currentTimeMillis()),"chanjin5","testNotice1","content4",0);
     connectMyDB.disConnectMyDB();
-    out.println("jsp import 테스트 및 DB 연결 문제 해결");
+    out.println("jsp import 테스트 및 DB 연결 문제 해결"); //git 내용 수정 및 pr 테스트 용도
 %>
 <form action="RegisterPage.jsp">
     <input type="submit"/>
