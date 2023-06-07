@@ -17,15 +17,10 @@
     <div class="content">
         <div class="content-title">
             <div class="logo">
-                <img src="" alt="자전거.png"/>
+                <img src="../logo/bicycle_oos.png" alt="자전거.png"/>
             </div>
             <div class="title">
-                <div>
-                    기장군 공영자전거
-                </div>
-                <div>
-                    무인대여 시스템
-                </div>
+                기장군 공영자전거 무인대여 시스템
             </div>
         </div>
         <form action="DoRegister.jsp" class="content-body" method="post">
@@ -50,7 +45,7 @@
                 </div>
             </div>
             <div class="button">
-                <div class="cancel-btn" onclick="location.href='MainPage.jsp';">
+                <div class="cancel-btn" onclick="location.href='../UserInquiryPage.jsp';">
                     cancel
                 </div>
                 <button class="register-btn"> register </button>
