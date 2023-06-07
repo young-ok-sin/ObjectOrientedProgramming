@@ -11,18 +11,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>메인페이지</title>
+    <link rel="stylesheet" href="MainPage.css">
+    <link rel="stylesheet" href="./MainHeader/MainHeader.css">
+    <title>MainPage</title>
 </head>
 <body>
-<% ConnectMyDB connectMyDB = new ConnectMyDB();
-    connectMyDB.insertNotice(new Date(System.currentTimeMillis()),"chanjin5","testNotice1","content4",0);
-    connectMyDB.disConnectMyDB();
-    out.println("jsp import 테스트 및 DB 연결 문제 해결");
-%>
-<form action="RegisterPage.jsp">
-    <input type="submit"/>
-    메인페이지
-</form>
-마스터 브랜치 바꿈!!
+<%--<% ConnectMyDB connectMyDB = new ConnectMyDB();--%>
+<%--    connectMyDB.disConnectMyDB();--%>
+<%--%>--%>
+<jsp:include page="./MainHeader/MainHeader.jsp"></jsp:include>
+<div class="bicycle">
+    <img class="bicycle-logo" src="logo/bicycle_oos.png" alt="logo">
+</div>
+<div class="menu">
+    <a class = "register" href="./Register/RegisterPage.jsp">회원 관리</a> <!--임시로 적용-->
+    <a class = "rent" href="">대여 관리</a>
+    <a class = "notice" href="">공지 관리</a>
+    <a class = "manage" href="">운영 관리</a>
+</div>
 </body>
 </html>
