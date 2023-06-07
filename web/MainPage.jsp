@@ -16,6 +16,7 @@
     <title>MainPage</title>
 </head>
 <body>
+
 <%--<% ConnectMyDB connectMyDB = new ConnectMyDB();--%>
 <%--    connectMyDB.disConnectMyDB();--%>
 <%--%>--%>
@@ -29,5 +30,6 @@
     <a class = "notice" href="">공지 관리</a>
     <a class = "manage" href="">운영 관리</a>
 </div>
+
 </body>
 </html>
