@@ -1,8 +1,8 @@
 package JDBC;
 
-import java.sql.*;
-import java.sql.Connection;
+import NoticeManage.Notice;
 
+import java.sql.*;
 
 public class ConnectMyDB{
     String url = "jdbc:mysql://localhost:3306/MyProject";
@@ -32,14 +32,14 @@ public class ConnectMyDB{
         }
     }
 
-    public void insertNotice(Date date, String writer, String title, String content, int result) throws SQLException { //잘 들어감.
+    public void insertNotice(Notice notice) throws SQLException {
         String query = "INSERT INTO notice VALUES (DEFAULT, ?, ?, ?, ?, ?)";
         PreparedStatement pstmt = connection.prepareStatement(query);
-        pstmt.setDate(1,date);
-        pstmt.setString(2, writer);
-        pstmt.setString(3, title);
-        pstmt.setString(4,content);
-        pstmt.setInt(5, result);
+        pstmt.setDate(1,notice.getDate());
+        pstmt.setString(2, notice.getWriter());
+        pstmt.setString(3, notice.getTitle());
+        pstmt.setString(4,notice.getContent());
+        pstmt.setInt(5, notice.getResult());
         pstmt.executeUpdate();
     }
 }

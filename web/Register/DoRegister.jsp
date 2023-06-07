@@ -14,12 +14,13 @@
     <%
         String id = request.getParameter("id");
         String pw = request.getParameter("password");
+        String name = request.getParameter("name");
         String phoneNumber = request.getParameter("phoneNumber");
         String age = request.getParameter("age");
         String date = request.getParameter("date");
         String url = "";
-        if((id != null) && (pw != null) && (phoneNumber != null) && (age != null) && (date != null)) {
-            url = "RegisterSuccess.jsp"; //Todo 조건문에서 무조건 True만 반환하는 것 해결
+        if(doRegister(id, pw, name, phoneNumber, age, date)) {
+            url = "RegisterSuccess.jsp";
         }
         else {
             url = "RegisterFail.jsp";
@@ -29,7 +30,8 @@
 </body>
 </html>
 <%!
-    private boolean checkInvalidValue(String id, String pw, String phoneNumber, String age, String date) {
-        return ((id != null) && (pw != null) && (phoneNumber != null) && (age != null) && (date != null));
+    private boolean doRegister(String id, String pw, String name, String phoneNumber, String age, String date) {
+        //Todo DB에 회원정보 저장하는 작업 수행
+        return true;
     }
 %>>
