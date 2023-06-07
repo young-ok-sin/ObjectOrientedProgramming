@@ -1,0 +1,64 @@
+.content{
+    margin: 0 40%;
+}
+.content-title{
+    display: flex;
+    color: #FF9378;
+}
+.logo{
+    flex-basis: 30%;
+}
+.title{
+    flex-basis: 70%;
+    text-align: center;
+}
+.content-body{
+    border: 1px solid #cccccc;
+    box-shadow: 2px 3px 5px 0px #cccccc;
+    text-align: center;
+    font-size: 12px;
+}
+.content-name{
+    margin: 10px 30%;
+    display: flex;
+}
+.icon{
+    flex-basis: 30%;
+}
+.name{
+    font-size: 14px;
+    flex-basis: 70%;
+    text-align: center;
+    color: #FF9378;
+}
+.inquiry-field{
+    display: flex;
+    color: #cccccc;
+}
+.content-icon{
+    flex-basis: 15%;
+}
+.indicate-field{
+    margin-right: 10px;
+    flex-basis: 25%;
+    text-align: right;
+}
+.inquiry-show-field{
+    flex-basis: 60%;
+    text-align: left;
+}
+.input-form > * {
+    margin-top: 15px;
+}
+.button {
+    border-top: 1px solid #cccccc;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.button > *{
+    margin: 15px 0;
+}
+.cancel-btn{
+    color: #cccccc;
+}

@@ -8,33 +8,52 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="RegisterPage.css">
     <title>회원가입</title>
 </head>
 <body>
     <div class="content">
         <div class="content-title">
             <div class="logo">
-
+                <img src="" alt="자전거.png"/>
             </div>
             <div class="title">
-                기장군 공영자전거 무인대여 시스템
+                <div>
+                    기장군 공영자전거
+                </div>
+                <div>
+                    무인대여 시스템
+                </div>
             </div>
         </div>
         <form action="DoRegister.jsp" class="content-body" method="post">
             <div class="input-form">
-                <input type="text" name="id" placeholder="ID">
-                <input type="password" name="password" placeholder="PW">
-                <input type="text" name="phoneNumber" placeholder="PhoneNumber">
-                <input type="text" name="age" placeholder="Age">
-                <input type="text" name="date" placeholder="YYYY-MM-DD">
+                <div class="id-field">
+                    <input type="text" name="id" placeholder="ID">
+                </div>
+                <div class="pw-field">
+                    <input type="password" name="password" placeholder="PW">
+                </div>
+                <div class="name-field">
+                    <input type="text" name="name" placeholder="홍길동">
+                </div>
+                <div class="phone-number-filed">
+                    <input type="text" name="phoneNumber" placeholder="PhoneNumber">
+                </div>
+                <div class="age-field">
+                    <input type="text" name="age" placeholder="Age">
+                </div>
+                <div class="date-field">
+                    <input type="text" name="date" placeholder="YYYY-MM-DD">
+                </div>
             </div>
             <div class="button">
-                <!--<input type="submit" value="cancel">-->
-                <input type="submit" value="register">
+                <div class="cancel-btn" onclick="location.href='MainPage.jsp';">
+                    cancel
+                </div>
+                <button class="register-btn"> register </button>
             </div>
         </form>
     </div>
-
-
 </body>
 </html>
