@@ -8,6 +8,15 @@ public class ConnectMyDB{
     String url = "jdbc:mysql://localhost:3306/MyProject";
     String option = "?useUnicode=true&characterEncoding=euckr";
     String userName = "user";
+
+    public ResultSet getResultSet() {
+        return resultSet;
+    }
+
+    public void setResultSet(ResultSet resultSet) {
+        this.resultSet = resultSet;
+    }
+
     String password = "1234";
 
     Connection connection = null; //DB 연결
@@ -42,4 +51,23 @@ public class ConnectMyDB{
         pstmt.setInt(5, result);
         pstmt.executeUpdate();
     }
+
+    public ResultSet inquiryOffice() throws SQLException {
+        System.out.println("office select 들어옴");
+        String query = "SELECT * FROM rentaloffice";
+        resultSet = statement.executeQuery(query);
+        return resultSet;
+    }
+    public ResultSet selectBicycleByOfficeID(String oID) throws SQLException {
+        System.out.println("bicycle select 들어옴");
+        String query = "SELECT * FROM bicycle where officeID=?";
+        PreparedStatement pstmt = connection.prepareStatement(query);
+        pstmt.setString(1, oID);
+
+        resultSet = pstmt.executeQuery();
+        System.out.println(query);
+       // resultSet = statement.executeQuery(query);
+        return resultSet;
+    }
+
 }
