@@ -12,8 +12,7 @@ body {
     height: 50px;
     margin: 1rem 0 0 3rem;
 }
-.header-layout a {
-    display: block;
+.header-layout  a {
     text-decoration: none;
     color: black;
     font-family: 'omyu_pretty';
@@ -25,6 +24,7 @@ body {
     margin: 0.6rem auto;
     font-style: normal;
     font-weight: bold;
+    border:none;
 }
 .header-layout .bicycle-logo {
     width: 150px;

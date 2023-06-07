@@ -12,19 +12,19 @@
 <html>
 <head>
     <link rel="stylesheet" href="MainPage.css">
-    <link rel="stylesheet" href="./MainHeader/MainHeader.css">
+    <link rel="stylesheet" href="../MainHeader/MainHeader.css">
     <title>MainPage</title>
 </head>
 <body>
 <%--<% ConnectMyDB connectMyDB = new ConnectMyDB();--%>
 <%--    connectMyDB.disConnectMyDB();--%>
 <%--%>--%>
-<jsp:include page="./MainHeader/MainHeader.jsp"></jsp:include>
+<jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
 <div class="bicycle">
-    <img class="bicycle-logo" src="logo/bicycle_oos.png" alt="logo">
+    <img class="bicycle-logo" src="../logo/bicycle_oos.png" alt="logo">
 </div>
 <div class="menu">
-    <a class = "register" href="./Register/RegisterPage.jsp">회원 관리</a> <!--임시로 적용-->
+    <a class = "register" href="../Register/RegisterPage.jsp">회원 관리</a> <!--임시로 적용-->
     <a class = "rent" href="">대여 관리</a>
     <a class = "notice" href="">공지 관리</a>
     <a class = "manage" href="">운영 관리</a>

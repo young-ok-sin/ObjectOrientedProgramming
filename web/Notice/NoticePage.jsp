@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="../MainHeader/MainHeader.css">
     <title>Notice</title>
 </head>
 <body>
