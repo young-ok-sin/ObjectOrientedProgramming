@@ -9,9 +9,11 @@
 <html>
 <head>
     <link rel="stylesheet" href="RegisterPage.css">
+    <link rel="stylesheet" href="../MainHeader/MainHeader.css">
     <title>회원가입</title>
 </head>
 <body>
+    <jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
     <div class="content">
         <div class="content-title">
             <div class="logo">

@@ -1,0 +1,30 @@
+.bicycle {
+    text-align: center;
+}
+.bicycle .bicycle-logo {
+    width: 400px;
+    height: 400px;
+}
+.menu {
+    display: flex;
+}
+.menu a {
+    margin: 0 auto;
+    display: block;
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 250px;
+    text-decoration-line: none;
+    font-family: 'omyu_pretty';
+    font-weight: bold;
+    font-size: larger;
+    color: black;
+}
+.menu .register,.notice {
+    background-color: #ffa48b;
+}
+.menu .rent,.manage {
+    background-color: #ffbead;
+}
