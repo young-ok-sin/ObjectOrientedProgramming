@@ -11,18 +11,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>메인페이지</title>
+    <link rel="stylesheet" href="MainPage.css">
+    <link rel="stylesheet" href="./MainHeader/MainHeader.css">
+    <title>MainPage</title>
 </head>
 <body>
-<% ConnectMyDB connectMyDB = new ConnectMyDB();
-    connectMyDB.disConnectMyDB();
-    out.println("jsp import 테스트 및 DB 연결 문제 해결"); //git 내용 수정 및 pr 테스트 용도
-%>
-<form action="BicycleRent.jsp">
-    <input type="submit" value="자전거대여"/>
-</form>
 
+<%--<% ConnectMyDB connectMyDB = new ConnectMyDB();--%>
+<%--    connectMyDB.disConnectMyDB();--%>
+<%--%>--%>
+<jsp:include page="./MainHeader/MainHeader.jsp"></jsp:include>
+<div class="bicycle">
+    <img class="bicycle-logo" src="logo/bicycle_oos.png" alt="logo">
+</div>
+<div class="menu">
+    <a class = "register" href="./Register/RegisterPage.jsp">회원 관리</a> <!--임시로 적용-->
+    <a class = "rent" href="">대여 관리</a>
+    <a class = "notice" href="">공지 관리</a>
+    <a class = "manage" href="">운영 관리</a>
+</div>
 
-마스터 브랜치 바꿈!!
 </body>
 </html>
