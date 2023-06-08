@@ -13,10 +13,10 @@
 </head>
 <body>
 <div class="header-layout">
-    <img class="my-logo" src="../img/bicycleLogo.png" alt="hamburger">
+    <img class="my-logo" src="../img/bicycleLogo.png" alt="my-logo">
     <a href="../Member/RegisterPage.jsp">회원 관리</a> <!--임시로 적용-->
     <a href="">대여 관리</a>
-    <a href="../Notice/NoticePage.jsp">공지 관리</a>
+    <a href="">공지 관리</a>
     <a href="">운영 관리</a>
     <a href="../MainPage/MainPage.jsp">메인 페이지</a>
 </div>

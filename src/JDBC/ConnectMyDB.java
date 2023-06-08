@@ -3,7 +3,6 @@ package JDBC;
 import MemberManage.Member;
 import NoticeManage.Notice;
 
-
 import java.sql.*;
 
 public class ConnectMyDB{
@@ -29,6 +28,10 @@ public class ConnectMyDB{
     public ResultSet getResultSet() {
         return resultSet;
     }
+    public void setResultSet(ResultSet resultSet) {
+        this.resultSet = resultSet;
+    }
+
     public void disConnectMyDB() throws SQLException {
         if(resultSet != null) {
             resultSet.close();
@@ -55,5 +58,4 @@ public class ConnectMyDB{
         int result = pstmt.executeUpdate();
         return result;
     }
-
 }
