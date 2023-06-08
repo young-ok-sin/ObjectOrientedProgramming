@@ -3,11 +3,11 @@ package NoticeManage;
 import java.sql.Date;
 
 public class Notice {
-    Date date;
-    String writer;
-    String title;
-    String content;
-    int result;
+    private Date date;
+    private String writer;
+    private String title;
+    private String content;
+    private int result;
 
     public Notice() {
         date = null;

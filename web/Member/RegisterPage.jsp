@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="button">
-                <div class="cancel-btn" onclick="location.href='../User/UserInquiryPage.jsp';">
+                <div class="cancel-btn" onclick="location.href='../Inquiry/UserInquiryPage.jsp';">
                     cancel
                 </div>
                 <button class="register-btn"> register </button>

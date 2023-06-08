@@ -24,11 +24,17 @@
 <div class="input-notice-info">
     <div class="input-notice-content">
         <img src="../Icon/pencil.svg" alt="writer" class="writer-img">
-        <input class="writer" name="writer" placeholder="작성자를 입력하세요.">
+        <label>
+            <input class="writer" name="writer" placeholder="작성자를 입력하세요.">
+        </label>
         <img src="../Icon/title.svg" alt="title" class="title-img">
-        <input class="title" name="title" placeholder="공지 제목을 입력해주세요">
+        <label>
+            <input class="title" name="title" placeholder="공지 제목을 입력해주세요">
+        </label>
         <img src="../Icon/content.svg" alt="content" class="content-img">
-        <input class="content" name="content" placeholder="내용을 입력해주세요">
+        <label>
+            <input class="content" name="content" placeholder="내용을 입력해주세요">
+        </label>
     </div>
 </div>
 </body>
