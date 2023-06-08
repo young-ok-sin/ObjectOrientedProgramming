@@ -90,7 +90,7 @@
             </div>
         </div>
         <div class="button">
-            <div class="cancel-btn" onclick="location.href='MainPage.jsp';">
+            <div class="cancel-btn" onclick="location.href='../MainPage/MainPage.jsp';">
                 cancel
             </div>
         </div>

@@ -1,5 +1,6 @@
 package JDBC;
 
+import MemberManage.Member;
 import NoticeManage.Notice;
 
 import java.sql.*;
@@ -48,6 +49,21 @@ public class ConnectMyDB{
             result = false;
             System.out.println("insert Error");
         }
+        return result;
+    }
+
+    public int insertMember(Member member) throws SQLException{
+        String query = "INSERT INTO member VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement pstmt = connection.prepareStatement(query);
+        pstmt.setString(1, member.getMemberId());
+        pstmt.setString(2, member.getPassword());
+        pstmt.setDate(3, member.getSighUpDate());
+        pstmt.setString(4, member.getName());
+        pstmt.setInt(5, member.getAge());
+        pstmt.setString(6, member.getBirthday());
+        pstmt.setString(7, member.getPhoneNumber());
+        pstmt.setString(8, member.getEmail());
+        int result = pstmt.executeUpdate();
         return result;
     }
 }
