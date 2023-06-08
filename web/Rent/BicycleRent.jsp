@@ -11,9 +11,11 @@
 <%@ page import="java.sql.SQLException" %>
 <html>
 <head>
+    <link rel="stylesheet" href="../MainHeader/MainHeader.css">
     <title>자전거 대여</title>
 </head>
 <body>
+<jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
 <div class="content">
     <div class="content-title">
         <div class="logo">

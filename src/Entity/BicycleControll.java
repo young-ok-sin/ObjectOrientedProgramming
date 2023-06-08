@@ -29,11 +29,11 @@ public class BicycleControll {
        bicycle = new Bicycle();
         connectMyDB = new ConnectMyDB();
     }
-    public ResultSet selectBicycleByOfficeID(String oID) throws SQLException {
+    public ResultSet selectBicycleByOfficeID(String officeID) throws SQLException {
         System.out.println("bicycle select 들어옴");
         String query = "SELECT * FROM bicycle where officeID=?";
         PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
-        pstmt.setString(1, oID);
+        pstmt.setString(1, officeID);
 
         connectMyDB.setResultSet(connectMyDB.getStatement().executeQuery(query));
         System.out.println(query);

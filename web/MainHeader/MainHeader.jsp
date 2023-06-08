@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="header-layout">
-    <img class="hamburger-icon" src="./hamburger_button.png" alt="hamburger">
+    <img class="my-logo" src="../img/bicycleLogo.png" alt="mylogo">
     <a href="../Register/RegisterPage.jsp">회원 관리</a> <!--임시로 적용-->
     <a href="">대여 관리</a>
     <a href="">공지 관리</a>
