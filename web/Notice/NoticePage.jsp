@@ -14,5 +14,6 @@
 <body>
     <jsp:include page="/MainHeader/MainHeader.jsp"></jsp:include>
 
+    <button class="gotoInsert" onclick="location.href='./NoticeInsert.jsp'">공지 등록</button>
 </body>
 </html>

@@ -19,6 +19,7 @@ public class ConnectMyDB{
         url = url + option;
         connection = DriverManager.getConnection(url, userName, password);
         statement = connection.createStatement();
+        System.out.println("DB에 연결되었습니다.");
     }
     public void disConnectMyDB() throws SQLException {
         if(resultSet != null) {
@@ -32,14 +33,21 @@ public class ConnectMyDB{
         }
     }
 
-    public void insertNotice(Notice notice) throws SQLException {
-        String query = "INSERT INTO notice VALUES (DEFAULT, ?, ?, ?, ?, ?)";
-        PreparedStatement pstmt = connection.prepareStatement(query);
-        pstmt.setDate(1,notice.getDate());
-        pstmt.setString(2, notice.getWriter());
-        pstmt.setString(3, notice.getTitle());
-        pstmt.setString(4,notice.getContent());
-        pstmt.setInt(5, notice.getResult());
-        pstmt.executeUpdate();
+    public boolean insertNotice(Notice notice) {
+        boolean result = true;
+        try {
+            String query = "INSERT INTO notice VALUES (DEFAULT, ?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.setDate(1, notice.getDate());
+            pstmt.setString(2, notice.getWriter());
+            pstmt.setString(3, notice.getTitle());
+            pstmt.setString(4, notice.getContent());
+            pstmt.setInt(5, notice.getResult());
+            pstmt.executeUpdate();
+        }catch (SQLException e) {
+            result = false;
+            System.out.println("insert Error");
+        }
+        return result;
     }
 }
