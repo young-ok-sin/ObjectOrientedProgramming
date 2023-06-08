@@ -1,0 +1,79 @@
+.content{
+    margin: 0 40%;
+    margin-top: 10%;
+}
+.content-title{
+    display: flex;
+    color: #FF9378;
+}
+.logo{
+    flex-basis: 30%;
+}
+.logo > img{
+    height: 100px;
+    object-fit: cover;
+}
+.title{
+    flex-basis: 70%;
+    text-align: center;
+    line-height: 100px;
+}
+.content-body{
+    border: 1px solid #cccccc;
+    box-shadow: 2px 3px 5px 0px #cccccc;
+    text-align: center;
+    font-size: 12px;
+}
+.content-name{
+    margin: 10px 30%;
+    display: flex;
+    line-height: 32px;
+}
+.icon{
+    flex-basis: 30%;
+}
+.name{
+    font-size: 14px;
+    flex-basis: 70%;
+    text-align: center;
+    color: #FF9378;
+}
+.inquiry-field{
+    display: flex;
+    color: #cccccc;
+    height: 24px;
+    margin: 0 18%;
+}
+.content-icon{
+    flex-basis: 15%;
+}
+.content-icon > img{
+    height: 24px;
+    object-fit: cover;
+}
+.indicate-field{
+    margin-right: 10px;
+    flex-basis: 25%;
+    text-align: right;
+    line-height: 24px;
+}
+.inquiry-show-field{
+    flex-basis: 60%;
+    text-align: left;
+    line-height: 24px;
+}
+.input-form > * {
+    margin-top: 15px;
+}
+.button {
+    border-top: 1px solid #cccccc;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.button > *{
+    margin: 15px 0;
+}
+.cancel-btn{
+    color: #cccccc;
+}
