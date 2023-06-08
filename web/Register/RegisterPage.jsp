@@ -17,7 +17,7 @@
     <div class="content">
         <div class="content-title">
             <div class="logo">
-                <img src="../logo/bicycle_oos.png" alt="자전거.png"/>
+                <img src="../img/bicycle_oos.png" alt="자전거.png"/>
             </div>
             <div class="title">
                 기장군 공영자전거 무인대여 시스템
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="button">
-                <div class="cancel-btn" onclick="location.href='../UserInquiryPage.jsp';">
+                <div class="cancel-btn" onclick="location.href='../User/UserInquiryPage.jsp';">
                     cancel
                 </div>
                 <button class="register-btn"> register </button>

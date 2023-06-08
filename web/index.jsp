@@ -10,7 +10,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="index.css">
-  <title>MainPage</title>
+  <title>시작 페이지</title>
 </head>
 <body>
 <button onclick="location.href='./MainPage/MainPage.jsp';">메인 페이지로</button>
