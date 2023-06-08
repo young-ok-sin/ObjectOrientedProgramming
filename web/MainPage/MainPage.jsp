@@ -21,7 +21,7 @@
 <%--%>--%>
 <jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
 <div class="bicycle">
-    <img class="bicycle-logo" src="../logo/bicycle_oos.png" alt="logo">
+    <img class="bicycle-logo" src="../img/bicycle_oos.png" alt="logo">
 </div>
 <div class="menu">
     <a class = "register" href="../Register/RegisterPage.jsp">회원 관리</a> <!--임시로 적용-->
