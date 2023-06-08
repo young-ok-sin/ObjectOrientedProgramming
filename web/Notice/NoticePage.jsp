@@ -8,10 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="../MainHeader/MainHeader.css">
     <title>Notice</title>
 </head>
 <body>
     <jsp:include page="/MainHeader/MainHeader.jsp"></jsp:include>
 
+    <button class="gotoInsert" onclick="location.href='./NoticeInsert.jsp'">공지 등록</button>
 </body>
 </html>
