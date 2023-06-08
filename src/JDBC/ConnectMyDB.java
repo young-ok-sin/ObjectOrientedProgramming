@@ -11,8 +11,32 @@ public class ConnectMyDB{
     String password = "1234";
 
     Connection connection = null; //DB 연결
+
     Statement statement = null; //쿼리문 전송
     ResultSet resultSet = null; //반환된 결과를 접수
+    public Statement getStatement() {
+        return statement;
+    }
+
+    public void setStatement(Statement statement) {
+        this.statement = statement;
+    }
+
+    public ResultSet getResultSet() {
+        return resultSet;
+    }
+
+    public void setResultSet(ResultSet resultSet) {
+        this.resultSet = resultSet;
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
 
     public ConnectMyDB() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");

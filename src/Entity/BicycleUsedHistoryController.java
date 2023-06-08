@@ -2,7 +2,7 @@ package Entity;
 
 import java.sql.*;
 
-public class BicycleUsedHistoryDAO {
+public class BicycleUsedHistoryController {
     String url = "jdbc:mysql://localhost:3306/MyProject";
     String option = "?useUnicode=true&characterEncoding=utf-8";
     String userName = "user"; String password = "1234";
@@ -17,7 +17,7 @@ public class BicycleUsedHistoryDAO {
     public void setResultSet(ResultSet resultSet) {
         this.resultSet = resultSet;
     }
-    public BicycleUsedHistoryDAO() throws SQLException, ClassNotFoundException {
+    public BicycleUsedHistoryController() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         url = url + option;
         connection = DriverManager.getConnection(url, userName, password);

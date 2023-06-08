@@ -2,17 +2,18 @@ package Entity;
 
 import java.util.Date;
 
-public class BicycleDTO {
+public class Bicycle {
     private String bicycleID;
     private String officeID;
     private String memberID;
     private Date usedDate;
     private float usedDistance;
 
-    public BicycleDTO() {
+
+    public Bicycle() {
     }
 
-    public BicycleDTO(String bicycleID, String officeID, String memberID, Date usedDate, float usedDistance, int isRented) {
+    public Bicycle(String bicycleID, String officeID, String memberID, Date usedDate, float usedDistance, int isRented) {
         this.bicycleID = bicycleID;
         this.officeID = officeID;
         this.memberID = memberID;

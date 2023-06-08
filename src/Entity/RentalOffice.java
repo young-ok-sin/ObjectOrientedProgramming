@@ -1,12 +1,15 @@
 package Entity;
 
-public class OfficeDTO {
+import JDBC.ConnectMyDB;
+
+public class RentalOffice {
+
     private String officeID;
     private String name;
     private String location;
     private int currentBicycleCnt;
     private int maximumBicycleCnt;
-    public OfficeDTO(String officeID, String name, String location, int currentBicycleCnt, int maximumBicycleCnt) {
+    public RentalOffice(String officeID, String name, String location, int currentBicycleCnt, int maximumBicycleCnt) {
         this.officeID = officeID;
         this.name = name;
         this.location = location;
@@ -14,7 +17,7 @@ public class OfficeDTO {
         this.maximumBicycleCnt = maximumBicycleCnt;
     }
 
-    public OfficeDTO() {
+    public RentalOffice() {
     }
 
     public String getOfficeID() {

@@ -10,7 +10,7 @@
 <%@ page import="java.sql.Date" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="Entity.OfficeDAO" %>
+<%@ page import="Entity.RentalOfficeController" %>
 <html>
 <head>
     <title>대여소 목록</title>
@@ -18,7 +18,7 @@
 <body>
 <%
     try {
-        OfficeDAO myDB = new OfficeDAO();
+        RentalOfficeController myDB = new RentalOfficeController();
 
         ResultSet resultSet = myDB.inquiryOffice();
 
@@ -49,7 +49,7 @@
     </div>
 </form>
 <%
-        myDB.disConnectMyDB(); // DB 연결 해제
+        myDB.getConnectMyDB().disConnectMyDB(); // DB 연결 해제
     } catch (SQLException e) {
         // SQLException 처리
         e.printStackTrace();

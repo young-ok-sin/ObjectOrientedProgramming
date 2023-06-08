@@ -10,7 +10,7 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="jdk.nashorn.internal.runtime.RewriteException" %>
-<%@ page import="Entity.BicycleDAO" %>
+<%@ page import="Entity.BicycleControll" %>
 selectBicycleByOfficeID(String oID)
 <html>
 <head>
@@ -21,7 +21,7 @@ selectBicycleByOfficeID(String oID)
     try {
         String selectedOffice = request.getParameter("selectedOffice");
         if (selectedOffice != null && !selectedOffice.isEmpty()) {
-            BicycleDAO myDB = new BicycleDAO(); // ConnectMyDB 클래스의 인스턴스 생성
+            BicycleControll myDB = new BicycleControll(); // ConnectMyDB 클래스의 인스턴스 생성
 
             ResultSet resultSet = myDB.selectBicycleByOfficeID(selectedOffice); // 선택된 대여소에 대한 자전거 조회
 
@@ -44,7 +44,7 @@ selectBicycleByOfficeID(String oID)
     <% } %>
 </table>
 <%
-            myDB.disConnectMyDB(); // DB 연결 해제
+           myDB.getConnectMyDB().disConnectMyDB(); // DB 연결 해제
         }
     } catch (SQLException e) {
         // SQLException 처리
