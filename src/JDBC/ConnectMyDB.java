@@ -1,5 +1,6 @@
 package JDBC;
 
+import MemberManage.Member;
 import NoticeManage.Notice;
 
 import java.sql.*;
