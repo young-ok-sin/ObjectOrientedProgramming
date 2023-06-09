@@ -4,7 +4,7 @@ import JDBC.ConnectMyDB;
 
 import java.sql.*;
 
-public class BicycleUsedHistoryController {
+public class BicycleUsedHistoryControl {
     BicycleUsedHistory bicycleUsedHistory;
     ConnectMyDB connectMyDB = null;
 
@@ -24,18 +24,16 @@ public class BicycleUsedHistoryController {
         this.connectMyDB = connectMyDB;
     }
 
-    public BicycleUsedHistoryController() throws SQLException, ClassNotFoundException {
+    public BicycleUsedHistoryControl() throws SQLException, ClassNotFoundException {
       bicycleUsedHistory = new BicycleUsedHistory();
       connectMyDB = new ConnectMyDB();
     }
-    public ResultSet inquiryBicycleUsedHistory()throws SQLException {
-        System.out.println("BicycleUsedHistory select 들어옴");
+    public ResultSet selectAllOperationallStatisticsByBicycle()throws SQLException {
         String query = "SELECT * FROM bicycleusedhistory";
         connectMyDB.setResultSet(connectMyDB.getStatement().executeQuery(query));
         return connectMyDB.getResultSet();
     }
-   public void insertInfo(String bicycleID) throws SQLException {
-        System.out.println("insertInfo 들어옴");
+   public void addHistory(String bicycleID) throws SQLException {
        String query = "INSERT INTO bicycleusedhistory VALUES (?)";
        PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
        pstmt.setString(1, bicycleID);

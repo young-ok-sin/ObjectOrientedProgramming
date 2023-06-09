@@ -6,10 +6,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BicycleControll {
+public class BicycleControl {
     Bicycle bicycle;
     ConnectMyDB connectMyDB = null;
-    public BicycleControll() throws SQLException, ClassNotFoundException {
+    public BicycleControl() throws SQLException, ClassNotFoundException {
         bicycle = new Bicycle();
         connectMyDB = new ConnectMyDB();
     }
@@ -18,8 +18,7 @@ public class BicycleControll {
     }
 
 
-    public List<Bicycle> selectBicycleByOfficeID(String officeID) throws SQLException {
-        System.out.println("bicycle select  들어옴");
+    public List<Bicycle> createDTO(String officeID) throws SQLException {
         List<Bicycle> list = new ArrayList<>();
         String query = "SELECT * FROM bicycle WHERE officeID=?";
         PreparedStatement pstm = connectMyDB.getConnection().prepareStatement(query);
@@ -35,16 +34,11 @@ public class BicycleControll {
         return list;
     }
 
-    public void upDateBicycleRendted(String selectedBicycle) throws SQLException {
-
-        System.out.println("upDateBicycleRendted");
+    public void changeBicycleStatus(String selectedBicycle, boolean isRented) throws SQLException {
         String query = "UPDATE bicycle SET isRented = ? WHERE bicycleID = ?";
-        System.out.println(query);
         PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
-        pstmt.setInt(1, 1);
+        pstmt.setBoolean(1,isRented);
         pstmt.setString(2, selectedBicycle);
         pstmt.executeUpdate();
-        System.out.println(query);
-        System.out.println(query);
     }
 }

@@ -1,4 +1,7 @@
-<%--
+<%@ page import="BicycleManage.BicycleControl" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="BicycleManage.BicycleUsedHistory" %>
+<%@ page import="BicycleManage.BicycleUsedHistoryControl" %><%--
   Created by IntelliJ IDEA.
   User: lee so rim
   Date: 2023-06-07
@@ -11,6 +14,24 @@
     <title>등록완료!!</title>
 </head>
 <body>
+<h>등록완료</h>
+<%
+    String selectedBicycle = request.getParameter("selectedBicycle");
+    try {
+        BicycleControl bicycleControl = new BicycleControl();
+        BicycleUsedHistoryControl bicycleUsedHistoryControl = new BicycleUsedHistoryControl();
+        boolean bicycleStatus = true;
+        bicycleControl.changeBicycleStatus(selectedBicycle,bicycleStatus);
+        bicycleUsedHistoryControl.addHistory(selectedBicycle);
+    } catch (SQLException e) {
+        // SQLException 처리
+        e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+        // ClassNotFoundException 처리
+        e.printStackTrace();
+    }
+    // 결과 출력
+%>
 
 </body>
 </html>

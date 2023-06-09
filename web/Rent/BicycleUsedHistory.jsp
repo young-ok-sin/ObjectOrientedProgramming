@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="BicycleManage.BicycleUsedHistoryController" %>
-<%@ page import="BicycleManage.BicycleUsedHistoryController" %>
+<%@ page import="BicycleManage.BicycleUsedHistoryControl" %>
+<%@ page import="BicycleManage.BicycleUsedHistoryControl" %>
 <html>
 <head>
     <title>자전거 이용 현황 조회</title>
@@ -17,9 +17,9 @@
 <body>
 <%
   try {
-    BicycleUsedHistoryController myDB = new BicycleUsedHistoryController();
+    BicycleUsedHistoryControl bicycleUsedHistoryControl = new BicycleUsedHistoryControl();
 
-    ResultSet resultSet = myDB.inquiryBicycleUsedHistory();
+    ResultSet resultSet = bicycleUsedHistoryControl.selectAllOperationallStatisticsByBicycle();
      // 테이블로 결과 출력
 %>
 <table>
@@ -42,7 +42,6 @@
   <% } %>
 </table>
 <%
-  myDB.getConnectMyDB().disConnectMyDB(); // DB 연결 해제
   } catch (SQLException e) {
   // SQLException 처리
   e.printStackTrace();

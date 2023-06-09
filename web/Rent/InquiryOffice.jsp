@@ -10,7 +10,7 @@
 <%@ page import="java.sql.Date" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="BicycleManage.RentalOfficeController" %>
+<%@ page import="BicycleManage.RentalOfficeControl" %>
 <html>
 <head>
     <title>대여소 목록</title>
@@ -18,7 +18,7 @@
 <body>
 <%
     try {
-        RentalOfficeController myDB = new RentalOfficeController();
+        RentalOfficeControl myDB = new RentalOfficeControl();
 
         ResultSet resultSet = myDB.inquiryOffice();
 

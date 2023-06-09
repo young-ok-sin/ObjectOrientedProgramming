@@ -10,9 +10,9 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="jdk.nashorn.internal.runtime.RewriteException" %>
-<%@ page import="BicycleManage.BicycleControll" %>
+<%@ page import="BicycleManage.BicycleControl" %>
 <%@ page import="BicycleManage.BicycleUsedHistory" %>
-<%@ page import="BicycleManage.BicycleUsedHistoryController" %>
+<%@ page import="BicycleManage.BicycleUsedHistoryControl" %>
 <%@ page import="BicycleManage.Bicycle" %>
 <%@ page import="java.util.List" %>
 <html>
@@ -20,18 +20,19 @@
     <title>선택된 자전거 조회</title>
 </head>
 <body>
+
 <%
     List<Bicycle> list = null;
     try {
         String selectedOffice = request.getParameter("selectedOffice");
         if (selectedOffice != null && !selectedOffice.isEmpty()) {
-            BicycleControll bicycleControll = new BicycleControll(); // ConnectMyDB 클래스의 인스턴스 생성
+            BicycleControl bicycleControll = new BicycleControl(); // ConnectMyDB 클래스의 인스턴스 생성
 
-            list = bicycleControll.selectBicycleByOfficeID(selectedOffice); // 선택된 대여소에 대한 자전거 조회
+            list = bicycleControll.createDTO(selectedOffice); // 선택된 대여소에 대한 자전거 조회
 
             // 결과 출력
 %>
-
+<form action="BicycleRentSuccess.jsp" method="post" onsubmit="return validateSelection();">
 <table>
     <tr>
         <th>Bicycle ID</th>
@@ -46,6 +47,7 @@
     <!-- 추가 필요한 열들 -->
     </tr>
     <% } %>
+
 </table>
 <%
         }
@@ -58,7 +60,7 @@
     }
 %>
 
-<form action="BicycleRentSuccess.jsp" onsubmit="return validateSelection();">
+
     <div class="button">
         <!--<input type="submit" value="cancel">-->
         <input type="submit" value="대여하기">
@@ -72,7 +74,6 @@
             alert("자전거를 선택해주세요.");
             return false; // 폼 제출 중지
         }
-        document.getElementById("selectedBicycle").value = selectedBicycle.value;
         return true; // 폼 제출 계속
     }
 </script>

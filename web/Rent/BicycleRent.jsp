@@ -9,8 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="JDBC.ConnectMyDB" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="BicycleManage.BicycleControll" %>
-<%@ page import="BicycleManage.BicycleUsedHistoryController" %>
+<%@ page import="BicycleManage.BicycleControl" %>
+<%@ page import="BicycleManage.BicycleUsedHistoryControl" %>
 <html>
 <head>
     <link rel="stylesheet" href="../MainHeader/MainHeader.css">
