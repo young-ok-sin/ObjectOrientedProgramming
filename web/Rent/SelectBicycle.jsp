@@ -10,41 +10,46 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="jdk.nashorn.internal.runtime.RewriteException" %>
-<%@ page import="Entity.BicycleControll" %>
-selectBicycleByOfficeID(String oID)
+<%@ page import="BicycleManage.BicycleControl" %>
+<%@ page import="BicycleManage.BicycleUsedHistory" %>
+<%@ page import="BicycleManage.BicycleUsedHistoryControl" %>
+<%@ page import="BicycleManage.Bicycle" %>
+<%@ page import="java.util.List" %>
 <html>
 <head>
     <title>선택된 자전거 조회</title>
 </head>
 <body>
+
 <%
+    List<Bicycle> list = null;
     try {
         String selectedOffice = request.getParameter("selectedOffice");
         if (selectedOffice != null && !selectedOffice.isEmpty()) {
-            BicycleControll myDB = new BicycleControll(); // ConnectMyDB 클래스의 인스턴스 생성
+            BicycleControl bicycleControll = new BicycleControl(); // ConnectMyDB 클래스의 인스턴스 생성
 
-            ResultSet resultSet = myDB.selectBicycleByOfficeID(selectedOffice); // 선택된 대여소에 대한 자전거 조회
+            list = bicycleControll.createDTO(selectedOffice); // 선택된 대여소에 대한 자전거 조회
 
             // 결과 출력
 %>
-<form action="BicycleRent.jsp" class="content-body" method="post">
+<form action="BicycleRentSuccess.jsp" method="post" onsubmit="return validateSelection();">
 <table>
     <tr>
         <th>Bicycle ID</th>
         <!-- 추가 필요한 열들 -->
     </tr>
 
-    <% while (resultSet.next()) { %>
+    <% for(int i = 0;i<list.size();i++) { %>
     <td>
-        <input type="radio" name="selectedBicycle" value="<%= resultSet.getString("bicycleID") %>">
+        <input type="radio" name="selectedBicycle" value="<%= list.get(i).getBicycleID() %>">
     </td>
-    <td><%= resultSet.getString("bicycleID") %></td>
+    <td><%= list.get(i).getBicycleID() %></td>
     <!-- 추가 필요한 열들 -->
     </tr>
     <% } %>
+
 </table>
 <%
-           myDB.getConnectMyDB().disConnectMyDB(); // DB 연결 해제
         }
     } catch (SQLException e) {
         // SQLException 처리
@@ -54,10 +59,23 @@ selectBicycleByOfficeID(String oID)
         e.printStackTrace();
     }
 %>
+
+
     <div class="button">
         <!--<input type="submit" value="cancel">-->
         <input type="submit" value="대여하기">
     </div>
 </form>
+
+<script>
+    function validateSelection() {
+        var selectedBicycle = document.querySelector('input[name="selectedBicycle"]:checked');
+        if (!selectedBicycle) {
+            alert("자전거를 선택해주세요.");
+            return false; // 폼 제출 중지
+        }
+        return true; // 폼 제출 계속
+    }
+</script>
 </body>
 </html>

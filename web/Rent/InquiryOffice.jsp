@@ -10,7 +10,7 @@
 <%@ page import="java.sql.Date" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="Entity.RentalOfficeController" %>
+<%@ page import="BicycleManage.RentalOfficeControl" %>
 <html>
 <head>
     <title>대여소 목록</title>
@@ -18,13 +18,13 @@
 <body>
 <%
     try {
-        RentalOfficeController myDB = new RentalOfficeController();
+        RentalOfficeControl myDB = new RentalOfficeControl();
 
         ResultSet resultSet = myDB.inquiryOffice();
 
         // 테이블로 결과 출력
 %>
-<form action="SelectBicycle.jsp" method="post">
+<form action="SelectBicycle.jsp" method="post" onsubmit="return validateSelection();">
     <table>
         <tr>
             <th>Select</th>
@@ -43,7 +43,7 @@
         <% } %>
     </table>
 
-    <div class="button">
+    <div class="button" >
         <!--<input type="submit" value="cancel">-->
         <input type="submit" value="대여소 선택">
     </div>
@@ -58,5 +58,16 @@
         e.printStackTrace();
     }
 %>
+
+<script>
+    function validateSelection() {
+        var selectedOffice = document.querySelector('input[name="selectedOffice"]:checked');
+        if (!selectedOffice) {
+            alert("대여소를 선택해주세요.");
+            return false; // 폼 제출 중지
+        }
+        return true; // 폼 제출 계속
+    }
+</script>
 </body>
 </html>

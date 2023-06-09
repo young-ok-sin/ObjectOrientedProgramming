@@ -1,10 +1,10 @@
-package Entity;
+package BicycleManage;
 
 import JDBC.ConnectMyDB;
 
 import java.sql.*;
 
-public class RentalOfficeController {
+public class RentalOfficeControl {
 
     RentalOffice rentalOffice;
     ConnectMyDB connectMyDB = null;
@@ -25,15 +25,13 @@ public class RentalOfficeController {
         this.connectMyDB = connectMyDB;
     }
 
-    public RentalOfficeController() throws SQLException, ClassNotFoundException {
+    public RentalOfficeControl() throws SQLException, ClassNotFoundException {
         rentalOffice = new RentalOffice();
         connectMyDB = new ConnectMyDB();
     }
     public ResultSet inquiryOffice() throws SQLException {
-        System.out.println("office select 들어옴");
         String query = "SELECT * FROM rentaloffice";
-
-         connectMyDB.setResultSet(connectMyDB.getStatement().executeQuery(query));
+        connectMyDB.setResultSet(connectMyDB.getStatement().executeQuery(query));
         return connectMyDB.getResultSet();
     }
 }
