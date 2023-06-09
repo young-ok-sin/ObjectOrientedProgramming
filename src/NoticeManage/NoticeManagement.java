@@ -49,7 +49,7 @@ public class NoticeManagement {
 
     public List<Notice> inquiryNoticeAll(int pageNum) {
         String query = "SELECT * FROM notice ORDERS LIMIT ?,?";
-        int pageSize = 10; // 페이지당 행의 수
+        int pageSize = 5; // 페이지당 행의 수
         int pageNumber = pageNum; // 페이지 번호
         List<Notice> list = new ArrayList<>();
         try {
