@@ -7,9 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<%
-    //Notice control과 entity 사용해서 DB에 input 값을 연결
-%>
 <head>
     <link rel="stylesheet" href="../MainHeader/MainHeader.css">
     <link rel="stylesheet" href="./NoticeInsert.css">
@@ -21,21 +18,27 @@
     <img src="../img/bicycle_oos.png" alt="logo">
     <span class="subheader-text">공지 등록</span>
 </div>
-<div class="input-notice-info">
-    <div class="input-notice-content">
-        <img src="../Icon/pencil.svg" alt="writer" class="writer-img">
-        <label>
-            <input class="writer" name="writer" placeholder="작성자를 입력하세요.">
-        </label>
-        <img src="../Icon/title.svg" alt="title" class="title-img">
-        <label>
-            <input class="title" name="title" placeholder="공지 제목을 입력해주세요">
-        </label>
-        <img src="../Icon/content.svg" alt="content" class="content-img">
-        <label>
-            <input class="content" name="content" placeholder="내용을 입력해주세요">
-        </label>
+<form action="DoInsertNotice.jsp" class="insert-notice-body" method="post">
+    <div class="input-notice-info">
+        <div class="input-notice-content">
+            <img src="../Icon/pencil.svg" alt="writer" class="writer-img">
+            <label>
+                <input class="writer" name="writer" placeholder="작성자를 입력하세요.">
+            </label>
+            <img src="../Icon/title.svg" alt="title" class="title-img">
+            <label>
+                <input class="title" name="title" placeholder="공지 제목을 입력해주세요">
+            </label>
+            <img src="../Icon/content.svg" alt="content" class="content-img">
+            <label>
+                <input class="content" name="content" placeholder="내용을 입력해주세요">
+                <div class="btn">
+                    <button class="cancel-btn" type="button" onclick="location.href='./NoticePage.jsp';">취소</button>
+                    <button class="insert-btn" type="submit">등록</button>
+                </div>
+            </label>
+        </div>
     </div>
-</div>
+</form>
 </body>
 </html>

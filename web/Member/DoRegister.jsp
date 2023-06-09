@@ -13,6 +13,7 @@
 </head>
 <body>
     <%
+        request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
         String pw = request.getParameter("password");
         String name = request.getParameter("name");
@@ -33,6 +34,6 @@
 <%!
     private boolean doRegister(String id, String pw, String name, String phoneNumber, int age, String date) throws SQLException, ClassNotFoundException {
         MemberManagement mm = new MemberManagement();
-        return mm.insertMember(id, pw, name, phoneNumber, age, date, "");
+        return mm.insertMember(mm.createMember(id, pw, name, phoneNumber, age, date, ""));
     }
-%>>
+%>
