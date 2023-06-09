@@ -18,7 +18,7 @@
     <img src="../img/bicycle_oos.png" alt="logo">
     <span class="subheader-text">공지 등록</span>
 </div>
-<form action="DoInsertNotice.jsp" class="insert-notice-body" method="get">
+<form action="DoInsertNotice.jsp" class="insert-notice-body" method="post">
     <div class="input-notice-info">
         <div class="input-notice-content">
             <img src="../Icon/pencil.svg" alt="writer" class="writer-img">
@@ -33,8 +33,8 @@
             <label>
                 <input class="content" name="content" placeholder="내용을 입력해주세요">
                 <div class="btn">
-                    <button class="cancel-btn" onclick="location.href='./NoticePage.jsp'">취소</button>
-                    <button class="insert-btn">등록</button>
+                    <button class="cancel-btn" type="button" onclick="location.href='./NoticePage.jsp';">취소</button>
+                    <button class="insert-btn" type="submit">등록</button>
                 </div>
             </label>
         </div>

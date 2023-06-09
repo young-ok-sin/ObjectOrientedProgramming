@@ -10,37 +10,46 @@
 <%@ page import="NoticeManage.Notice" %>
 <%@ page import="NoticeManage.NoticeManagement" %>
 <%@ page import="java.sql.SQLException" %>
+
+<html>
+<head>
+    <title>InsertNotice</title>
+</head>
+<body>
 <%
-    request.setCharacterEncoding("euc-kr");
+    request.setCharacterEncoding("utf-8");
     Date date = new Date(System.currentTimeMillis());
     String writer = request.getParameter("writer");
     String title = request.getParameter("title");
     String content = request.getParameter("content");
     int result = 0;
+    String url = "";
+
+    if(doInsertNotice(date, writer, title, content, result)) {
+        url = "../ResultPage/Success.jsp";
+    }else {
+        url = "../ResultPage/Fail.jsp";
+    }
+    response.sendRedirect(url);
 %>
-<html>
-<head>
-    <title>InsertNotice</title>
-    <link rel="stylesheet" href="../MainHeader/MainHeader.css">
-</head>
-<body>
-<jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
-등록 완료
 </body>
 </html>
-<%
-    try {
+<%!
+    private boolean doInsertNotice(Date date, String writer, String title, String content, int result) {
         boolean dbResult = false;
-        NoticeManagement noticeManagement = new NoticeManagement();
-        Notice notice = noticeManagement.getNotice(date, writer, title, content, result);
-        dbResult = noticeManagement.insertNotice(notice);
-        if(dbResult) {
-            System.out.println("db 성공");
-        }else {
-            System.out.println("db 실패");
+        if (writer.equals("") || title.equals("") || content.equals("")) {
+            System.out.println("작성자, 제목, 내용을 다시 입력해주세요.");
+        } else {
+            try {
+                NoticeManagement noticeManagement = new NoticeManagement();
+                Notice notice = noticeManagement.getNotice(date, writer, title, content, result);
+                dbResult = noticeManagement.insertNotice(notice);
+                System.out.println("db 성공");
+            } catch (SQLException | ClassNotFoundException e) {
+                System.out.println("Error InsertNotice");
+                e.printStackTrace();
+            }
         }
-    } catch (SQLException | ClassNotFoundException e) {
-        System.out.println("Error InsertNotice");
-        e.printStackTrace();
+        return dbResult;
     }
 %>

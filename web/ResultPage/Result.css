@@ -1,0 +1,12 @@
+.result {
+    text-align: center;
+}
+span {
+    font-size: 80px;
+    display: block;
+}
+button {
+    margin-top: 3rem;
+    width: 150px;
+    height: 50px;
+}
