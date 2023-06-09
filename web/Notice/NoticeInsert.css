@@ -22,12 +22,13 @@ img {
     font-size: 60px;
     font-weight: bold;
     font-family: 'omyu_pretty';
-    left: 46%;
+    left: 43%;
     top:40%;
 }
 .input-notice-info {
     margin: 5rem 10rem 0 0;
     width: 100%;
+    height: 70%;
 }
 .input-notice-info .writer {
     width:130px;
@@ -58,4 +59,13 @@ img {
     position: absolute;
     bottom: 80%;
     right:97%;
+}
+.btn {
+    width: 100%;
+    text-align: right;
+    margin-top: 0.5rem;
+}
+.btn button{
+    width: 110px;
+    height: 20px;
 }
