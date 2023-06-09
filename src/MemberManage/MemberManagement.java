@@ -2,14 +2,17 @@ package MemberManage;
 
 import JDBC.ConnectMyDB;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class MemberManagement {
-    Member member = null;
+    private Member member = null;
+    private ConnectMyDB connectMyDB = null;
 
-    public MemberManagement() {
+    public MemberManagement() throws SQLException, ClassNotFoundException {
         member = new Member();
+        connectMyDB = new ConnectMyDB();
     }
 
     public Member createMember (String id, String pw, String name, String phoneNumber, int age, String date, String email) {
@@ -24,9 +27,27 @@ public class MemberManagement {
         return member;
     }
 
-    public boolean insertMember(String id, String pw, String name, String phoneNumber, int age, String date, String email) throws SQLException, ClassNotFoundException {
-        member = createMember(id, pw, name, phoneNumber, age, date, email);
-        int result =  new ConnectMyDB().insertMember(member);
+    public boolean insertMember(Member member) throws SQLException{
+        int result = 0;
+        try{
+            String query = "INSERT INTO member VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
+            System.out.println(member.getMemberId());
+            System.out.println(member.getPassword());
+            pstmt.setString(1, member.getMemberId());
+            pstmt.setString(2, member.getPassword());
+            pstmt.setDate(3, member.getSighUpDate());
+            pstmt.setString(4, member.getName());
+            pstmt.setInt(5, member.getAge());
+            pstmt.setString(6, member.getBirthday());
+            pstmt.setString(7, member.getPhoneNumber());
+            pstmt.setString(8, member.getEmail());
+            result = pstmt.executeUpdate();
+        } catch(SQLException e) {
+            System.out.println("ERROR: CANNOT INSERT");
+            e.printStackTrace();
+        }
+
         return result == 1;
     }
 }
