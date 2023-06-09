@@ -14,7 +14,7 @@ public class ConnectMyDB {
         Class.forName("com.mysql.cj.jdbc.Driver");
         connection = DriverManager.getConnection(url, userName, password);
         statement = connection.createStatement();
-        System.out.println("DB에 연결되었습니다.");
+        System.out.println("DB connect.");
     }
 
     public Connection getConnection() {
@@ -43,5 +43,6 @@ public class ConnectMyDB {
         if (connection != null) {
             connection.close();
         }
+        System.out.println("DB disconnect");
     }
 }
