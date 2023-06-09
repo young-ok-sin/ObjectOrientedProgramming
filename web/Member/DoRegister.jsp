@@ -35,4 +35,4 @@
         MemberManagement mm = new MemberManagement();
         return mm.insertMember(id, pw, name, phoneNumber, age, date, "");
     }
-%>>
+%>

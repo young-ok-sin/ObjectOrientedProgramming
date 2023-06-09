@@ -25,7 +25,7 @@ public class NoticeManagement {
             notice.setResult(result);
         return notice;
     }
-    public boolean insertNotice(Notice notice) {
+    public boolean insertNotice(Notice notice) throws SQLException {
         boolean result = true;
         try {
             String query = "INSERT INTO notice VALUES (DEFAULT, ?, ?, ?, ?, ?)";
@@ -40,6 +40,7 @@ public class NoticeManagement {
             result = false;
             System.out.println("insert Error");
         }
+        connectMyDB.disConnectMyDB();
         return result;
     }
     public List<Notice> inquiryNoticeAll (int pageNum) {
