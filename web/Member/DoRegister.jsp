@@ -1,4 +1,5 @@
-<%--
+<%@ page import="MemberManage.MemberManagement" %>
+<%@ page import="java.sql.SQLException" %><%--
   Created by IntelliJ IDEA.
   User: lks99
   Date: 2023-06-06
@@ -12,11 +13,12 @@
 </head>
 <body>
     <%
+        request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
         String pw = request.getParameter("password");
         String name = request.getParameter("name");
         String phoneNumber = request.getParameter("phoneNumber");
-        String age = request.getParameter("age");
+        int age = Integer.parseInt(request.getParameter("age"));
         String date = request.getParameter("date");
         String url = "";
         if(doRegister(id, pw, name, phoneNumber, age, date)) {
@@ -30,8 +32,8 @@
 </body>
 </html>
 <%!
-    private boolean doRegister(String id, String pw, String name, String phoneNumber, String age, String date) {
-        //Todo DB에 회원정보 저장하는 작업 수행
-        return true;
+    private boolean doRegister(String id, String pw, String name, String phoneNumber, int age, String date) throws SQLException, ClassNotFoundException {
+        MemberManagement mm = new MemberManagement();
+        return mm.insertMember(mm.createMember(id, pw, name, phoneNumber, age, date, ""));
     }
-%>>
+%>
