@@ -19,7 +19,7 @@ public class BicycleControll {
 
 
     public List<Bicycle> selectBicycleByOfficeID(String officeID) throws SQLException {
-        System.out.println("bicycle select 들어옴");
+        System.out.println("bicycle select  들어옴");
         List<Bicycle> list = new ArrayList<>();
         String query = "SELECT * FROM bicycle WHERE officeID=?";
         PreparedStatement pstm = connectMyDB.getConnection().prepareStatement(query);

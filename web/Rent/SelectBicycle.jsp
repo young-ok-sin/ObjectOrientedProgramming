@@ -38,11 +38,11 @@
         <!-- 추가 필요한 열들 -->
     </tr>
 
-    <% while (resultSet.next()) { %>
+    <% for(int i = 0;i<list.size();i++) { %>
     <td>
-        <input type="radio" name="selectedBicycle" value="<%= resultSet.getString("bicycleID") %>">
+        <input type="radio" name="selectedBicycle" value="<%= list.get(i).getBicycleID() %>">
     </td>
-    <td><%= resultSet.getString("bicycleID") %></td>
+    <td><%= list.get(i).getBicycleID() %></td>
     <!-- 추가 필요한 열들 -->
     </tr>
     <% } %>
