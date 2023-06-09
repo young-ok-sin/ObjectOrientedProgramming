@@ -31,7 +31,9 @@
             </label>
             <img src="../Icon/content.svg" alt="content" class="content-img">
             <label>
-                <input class="content" name="content" placeholder="내용을 입력해주세요">
+                <div class="content-area">
+                    <textarea class="content" name="content" placeholder="내용을 입력하세요."></textarea>
+                </div>
                 <div class="btn">
                     <button class="cancel-btn" type="button" onclick="location.href='./NoticePage.jsp';">취소</button>
                     <button class="insert-btn" type="submit">등록</button>
