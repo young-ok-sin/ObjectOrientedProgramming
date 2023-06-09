@@ -1,4 +1,4 @@
-package Entity;
+package BicycleManage;
 
 import JDBC.ConnectMyDB;
 
@@ -32,8 +32,7 @@ public class RentalOfficeController {
     public ResultSet inquiryOffice() throws SQLException {
         System.out.println("office select 들어옴");
         String query = "SELECT * FROM rentaloffice";
-
-         connectMyDB.setResultSet(connectMyDB.getStatement().executeQuery(query));
+        connectMyDB.setResultSet(connectMyDB.getStatement().executeQuery(query));
         return connectMyDB.getResultSet();
     }
 }

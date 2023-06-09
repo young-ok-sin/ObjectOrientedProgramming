@@ -9,6 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="JDBC.ConnectMyDB" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="BicycleManage.BicycleControll" %>
+<%@ page import="BicycleManage.BicycleUsedHistoryController" %>
 <html>
 <head>
     <link rel="stylesheet" href="../MainHeader/MainHeader.css">
@@ -22,13 +24,19 @@
 
         </div>
         <div class="title">
-            기장군 공영자전거 무인대여 시스템
+         기장군 공영자전거 무인대여 시스템
         </div>
     </div>
     <form action="InquiryOffice.jsp" class="content-body" method="post">
         <div class="button">
             <!--<input type="submit" value="cancel">-->
-            <input type="submit" value="조회하기">
+            <input type="submit" value="자전거 대여하기">
+        </div>
+    </form>
+    <form action="BicycleUsedHistory.jsp" class="content-body" method="post">
+        <div class="button">
+            <!--<input type="submit" value="cancel">-->
+            <input type="submit" value="자전거 이용 현황 조회">
         </div>
     </form>
 </div>
