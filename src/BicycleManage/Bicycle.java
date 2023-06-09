@@ -1,4 +1,4 @@
-package Entity;
+package BicycleManage;
 
 import java.util.Date;
 

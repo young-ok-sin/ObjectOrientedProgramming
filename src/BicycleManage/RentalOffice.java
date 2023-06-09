@@ -1,6 +1,4 @@
-package Entity;
-
-import JDBC.ConnectMyDB;
+package BicycleManage;
 
 public class RentalOffice {
 
