@@ -17,34 +17,23 @@ public class Member {
     private String email;
 
     public Member() {
-        memberID = "";
-        password = "";
+        memberID = null;
+        password = null;
         signUpDate = java.sql.Date.valueOf(LocalDate.now());
-        name = "";
+        name = null;
         age = 0;
-        birthday = "";
-        phoneNumber = "";
+        birthday = null;
+        phoneNumber = null;
         email = "";
     }
 
-/*    public boolean insertMember(Member member) {
-        System.out.println(memberID);
-        System.out.println(password);
-        System.out.println(signUpDate);
-        System.out.println(name);
-        System.out.println(age);
-        System.out.println(birthday);
-        System.out.println(phoneNumber);
-        System.out.println(email);
-        try {
-            ConnectMyDB connectMyDB.insertMember(member);
-        } catch (SQLException e) {
-            System.out.println("Error: Insert Member");
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }*/
+    public Member(String id, String name, int age, String date, String phoneNumber) {
+        memberID = id;
+        this.name = name;
+        this.age = age;
+        birthday = date;
+        this.phoneNumber = phoneNumber;
+    }
 
 
     public String getMemberId() {

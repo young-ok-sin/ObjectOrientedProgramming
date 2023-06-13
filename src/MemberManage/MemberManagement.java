@@ -3,12 +3,14 @@ package MemberManage;
 import JDBC.ConnectMyDB;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class MemberManagement {
     private Member member = null;
     private ConnectMyDB connectMyDB = null;
+    private ResultSet rs = null;
 
     public MemberManagement() throws SQLException, ClassNotFoundException {
         member = new Member();
@@ -32,8 +34,6 @@ public class MemberManagement {
         try{
             String query = "INSERT INTO member VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
-            System.out.println(member.getMemberId());
-            System.out.println(member.getPassword());
             pstmt.setString(1, member.getMemberId());
             pstmt.setString(2, member.getPassword());
             pstmt.setDate(3, member.getSighUpDate());
@@ -49,5 +49,40 @@ public class MemberManagement {
         }
 
         return result == 1;
+    }
+
+    public boolean isExist(String id, String pwd) throws SQLException {
+        String query = "select * from member where memberID = ? and password = ?";
+        PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
+        pstmt.setString(1, id);
+        pstmt.setString(2, pwd);
+
+        rs = pstmt.executeQuery();
+        return rs.next();
+    }
+
+    public Member getMemberInfo(String id) throws SQLException {
+        String query = "select * from member where memberID = ?";
+        PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
+        pstmt.setString(1, id);
+
+        rs = pstmt.executeQuery();
+        if(rs.next()) {
+            String name = rs.getString("name");
+            int age = rs.getInt("age");
+            String date = rs.getString("birthday");
+            String phoneNumber = rs.getString("phoneNumber");
+
+            connectMyDB.disConnectMyDB();
+            return new Member(id, name, age, date, phoneNumber);
+        }
+        try{
+            if(connectMyDB.getConnection() != null) connectMyDB.getConnection().close();
+            if(pstmt != null) pstmt.close();
+            if(rs != null) rs.close();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

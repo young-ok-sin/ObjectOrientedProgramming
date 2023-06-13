@@ -13,6 +13,7 @@
   <title>시작 페이지</title>
 </head>
 <body>
-<button onclick="location.href='./MainPage/MainPage.jsp';">메인 페이지로</button>
+<button onclick="location.href='./Login/Login.jsp';">로그인 페이지로</button>
+<button onclick="location.href='./Member/RegisterPage.jsp';">회원가입 페이지로</button>
 </body>
 </html>

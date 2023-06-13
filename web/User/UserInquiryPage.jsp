@@ -8,12 +8,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="UserInquiry.css?after">
+    <link rel="stylesheet" href="./UserInquiry.css?after">
     <link rel="stylesheet" href="../MainHeader/MainHeader.css">
     <title>회원조회</title>
 </head>
 <jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
 <body>
+<%
+    String id = (String) request.getAttribute("id");
+    String name = (String) request.getAttribute("name");
+    int age = (int) request.getAttribute("age");
+    String date = (String) request.getAttribute("date");
+    String phoneNumber = (String) request.getAttribute("phoneNumber");
+%>
 <div class="content">
     <div class="content-title">
         <div class="logo">
@@ -41,7 +48,7 @@
                     ID:
                 </div>
                 <div class="inquiry-show-field">
-                    1q2w3e4r
+                    <%=id%>
                 </div>
             </div>
             <div class="inquiry-field" id="name-field">
@@ -52,7 +59,7 @@
                     Name:
                 </div>
                 <div class="inquiry-show-field">
-                    이종현
+                    <%=name%>
                 </div>
             </div>
             <div class="inquiry-field" id="age-field">
@@ -63,7 +70,7 @@
                     Age:
                 </div>
                 <div class="inquiry-show-field">
-                    22
+                    <%=age%>
                 </div>
             </div>
             <div class="inquiry-field" id="date-field">
@@ -74,7 +81,7 @@
                     Birth:
                 </div>
                 <div class="inquiry-show-field">
-                    2000-08-08
+                    <%=date%>
                 </div>
             </div>
             <div class="inquiry-field" id="phone-number-filed">
@@ -85,12 +92,12 @@
                     Contact:
                 </div>
                 <div class="inquiry-show-field">
-                    010-4377-6004
+                    <%=phoneNumber%>
                 </div>
             </div>
         </div>
         <div class="button">
-            <div class="cancel-btn" onclick="location.href='MainPage.jsp';">
+            <div class="cancel-btn" onclick="location.href='../MainPage/MainPage.jsp';">
                 cancel
             </div>
         </div>
