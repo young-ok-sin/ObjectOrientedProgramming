@@ -22,19 +22,13 @@
         String date = request.getParameter("date");
         String url = "";
         if(doRegister(id, pw, name, phoneNumber, age, date)) {
-            url = "../index.jsp";
+            response.sendRedirect("../index.jsp");
         }
         else {
-            url = "RegisterFail.jsp";
+            //실패 알림
+            response.sendRedirect("./RegisterPage.jsp");
         }
     %>
-    <jsp:forward page="<%= url %>">
-        <jsp:param name="id" value="<%=id%>"/>
-        <jsp:param name="name" value="<%=name%>"/>
-        <jsp:param name="phoneNumber" value="<%=phoneNumber%>"/>
-        <jsp:param name="age" value="<%=age%>"/>
-        <jsp:param name="date" value="<%=date%>"/>
-    </jsp:forward>
 </body>
 </html>
 <%!
