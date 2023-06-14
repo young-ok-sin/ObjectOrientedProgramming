@@ -1,4 +1,5 @@
-<%@ page import="java.sql.SQLException" %><%--
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="BicycleManage.BicycleControl" %><%--
   Created by IntelliJ IDEA.
   User: duddhr
   Date: 2023-06-14
@@ -12,27 +13,23 @@
 </head>
 <body>
 <%
-//    request.setCharacterEncoding("UTF-8");
-//    String id = request.getParameter("id");
-//    String pw = request.getParameter("password");
-//    String name = request.getParameter("name");
-//    String phoneNumber = request.getParameter("phoneNumber");
-//    int age = Integer.parseInt(request.getParaameter("age"));
-//    String date = request.getParameter("date");
-//    String url = "";
-//    if(doRegister(id, pw, name, phoneNumber, age, date)) {
-//        url = "RegisterSuccess.jsp";
-//    }
-//    else {
-//        url = "RegisterFail.jsp";
-//    }
+    request.setCharacterEncoding("UTF-8");
+    String bicycle_Id = request.getParameter("bicycle_id");
+    String rentalOffcie_Id = request.getParameter("rent_id");
+    String url = "";
+    if(DoRegisterBicycle(bicycle_Id, rentalOffcie_Id)) {
+        url = "../ResultPage/Success.jsp";
+    }
+    else {
+        url = "../ResultPage/Fail.jsp";
+    }
 %>
-<%--<jsp:forward page="<%= url %>"></jsp:forward>--%>
+<jsp:forward page="<%= url %>"></jsp:forward>
 </body>
 </html>
 <%!
-//    private boolean DoRegisterBicycle() throws SQLException, ClassNotFoundException {
-//        MemberManagement mm = new MemberManagement();
-//        return mm.insertMember(mm.createMember(id, pw, name, phoneNumber, age, date, ""));
-//    }
+    private boolean DoRegisterBicycle(String bicycle_Id, String rentalOffcie_Id) throws SQLException, ClassNotFoundException {
+        BicycleControl bi = new BicycleControl();
+        return bi.insertBicycle(bi.createBicycle(bicycle_Id,rentalOffcie_Id));
+    }
 %>

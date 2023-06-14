@@ -8,8 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="BicycleRegister.css">
-    <link rel="stylesheet" href="../MainHeader/MainHeader.css">
+    <link rel="stylesheet" href="../../Management/BicycleRegister.css">
     <title>자전거 등록</title>
 </head>
 <body>
@@ -31,10 +30,8 @@
                         <input type = "text" name = "rent_id" placeholder="해당 자전거가 속할 대여소 ID를 입력하세요">
                     </div>
                     <div class = "button">
-                        <div class = "cancle" onclick="location.href='../ChoosePage.jsp';">
-                            취소
-                        </div>
-                        <div class = "register_btn"> 등록 </div>
+                        <button class = "register_btn"> 등록
+                        </button>
                     </div>
                 </div>
             </form>

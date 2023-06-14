@@ -28,7 +28,7 @@
     <a class = "register" href="../Member/RegisterPage.jsp">회원 관리</a> <!--임시로 적용-->
     <a class = "rent" href="../Rent/BicycleRent.jsp">대여 관리</a>
     <a class = "notice" href="../Notice/NoticePage.jsp">공지 관리</a>
-    <a class = "manage" href="">운영 관리</a>
+    <a class = "manage" href="../Management/ChoosePage.jsp">운영 관리</a>
 </div>
 
 </body>
