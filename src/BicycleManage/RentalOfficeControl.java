@@ -34,4 +34,13 @@ public class RentalOfficeControl {
         connectMyDB.setResultSet(connectMyDB.getStatement().executeQuery(query));
         return connectMyDB.getResultSet();
     }
+    public void insertOffice(String rentalOfficeId, String rentalOfficeName, int rentalOfficeMax , String rentalofficePos)throws SQLException{
+        String query = "INSERT INTO rentaloffice (OffiId, name, location, maximumBicycleCnt) VALUES (?, ?, ?, ?)";
+        PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
+        pstmt.setString(1,rentalOfficeId);
+        pstmt.setString(2,rentalOfficeName);
+        pstmt.setInt(3,rentalOfficeMax);
+        pstmt.setString(4,rentalofficePos);
+        pstmt.executeQuery();
+    }
 }
