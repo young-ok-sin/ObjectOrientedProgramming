@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="../../Management/RentalOfficeRegister.css">
+    <link rel="stylesheet" href="../../Management/RentalOfficeRegister.css"?after>
 
     <title>대여소 등록</title>
 </head>
