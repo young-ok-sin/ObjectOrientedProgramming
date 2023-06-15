@@ -41,4 +41,12 @@ public class BicycleControl {
         pstmt.setString(2, selectedBicycle);
         pstmt.executeUpdate();
     }
+    public void insertBicycle(String bicycleID, String officeID)throws SQLException{
+        String query = "INSERT INTO bicycle (bicycleId, rentalOfficeId) VALUES (?, ?)";
+        PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
+        pstmt.setString(1,bicycleID);
+        pstmt.setString(2,officeID);
+        pstmt.executeQuery();
+    }
+
 }
