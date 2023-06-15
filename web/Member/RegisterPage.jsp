@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="RegisterPage.css">
+    <link rel="stylesheet" href="./RegisterPage.css?after">
     <link rel="stylesheet" href="../MainHeader/MainHeader.css">
     <title>회원가입</title>
 </head>
