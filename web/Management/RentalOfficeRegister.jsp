@@ -5,7 +5,9 @@
 
     <title>대여소 등록</title>
     <script>
+        var isDuplicate = false;
         function validateForm() {
+
             var rentalOfficeName = document.forms["registerForm"]["rentaloffice_name"].value;
             var rentalOfficeLocation = document.forms["registerForm"]["rentaloffice_pos"].value;
             var rentalOfficeId = document.forms["registerForm"]["rentalOffice_id"].value;
@@ -15,10 +17,10 @@
                 alert("모든 항목을 입력하세요.");
                 return false;
             }
-            if(rentalofficeMax <= 0 ){
+            if(rentalofficeMax < 0 ){
                 alert("최대 자전거 수는 0 또는 양수 값만 설정이 가능합니다.");
+                return false;
             }
-
             return true;
         }
     </script>
@@ -42,7 +44,7 @@
                     <input type = "text" name = "rentaloffice_name" placeholder="신규 대여소 이름를 입력하세요">
                 </div>
                 <div class = "rentalOfficePos">
-                    <input type = "text" name = "rentaloffice_pos" placeholder="해당 대여소의 위치를 입력하세요">
+                    <input type = "text" name = "rentaloffice_pos" placeholder="대여소의 위치를 입력하세요">
                 </div>
                 <div class = "rentalOfficeMax">
                     <input type = "text" name = "rentaloffice_max" placeholder="최대 자전거 수를 입력하세요">
