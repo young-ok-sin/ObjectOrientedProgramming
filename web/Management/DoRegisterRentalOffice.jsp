@@ -18,12 +18,10 @@
   String rentalOffice_Name = request.getParameter("rentaloffice_name");
   String location= request.getParameter("rentaloffice_pos");
   String maximumBicycleCntStr = request.getParameter("rentaloffice_max");
+
   int maximumBicycleCnt = 0;
-  if (maximumBicycleCntStr != null && !maximumBicycleCntStr.trim().isEmpty()) {
-    maximumBicycleCnt = Integer.parseInt(maximumBicycleCntStr);
-  } else {
-    System.out.println("0보다 큰 정수값을 입력하세요.");
-  }
+  maximumBicycleCnt = Integer.parseInt(maximumBicycleCntStr);
+
   String url = "";
   if(DoRegisterRentalOffice(rentalOffice_Id, rentalOffice_Name,location,maximumBicycleCnt)) {
     url = "../ResultPage/Success.jsp";
