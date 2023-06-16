@@ -1,4 +1,4 @@
-<%@ page import="MemberManage.MemberManagement" %>
+<%@ page import="MemberManage.UserController" %>
 <%@ page import="java.sql.SQLException" %><%--
   Created by IntelliJ IDEA.
   User: lks99
@@ -18,22 +18,34 @@
         String pw = request.getParameter("password");
         String name = request.getParameter("name");
         String phoneNumber = request.getParameter("phoneNumber");
-        int age = Integer.parseInt(request.getParameter("age"));
+        String strAge = request.getParameter("age");
         String date = request.getParameter("date");
+        System.out.println("ddd" + pw);
+
         String url = "";
-        if(doRegister(id, pw, name, phoneNumber, age, date)) {
-            response.sendRedirect("../index.jsp");
-        }
-        else {
-            //실패 알림
+        try {
+            if(!isEmpty(id, pw, name, strAge, date, phoneNumber) && doRegister(id, pw, name, phoneNumber, Integer.parseInt(strAge), date)) {
+                response.sendRedirect("../index.jsp");
+            }
+            else {
+                //실패 알림
+                response.sendRedirect("./RegisterPage.jsp");
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
             response.sendRedirect("./RegisterPage.jsp");
         }
+
     %>
 </body>
 </html>
 <%!
+    private boolean isEmpty(String id, String pw, String name, String age, String date, String phoneNumber) {
+        return id.isEmpty() || pw.isEmpty() || name.isEmpty() || age.isEmpty() || date.isEmpty() || phoneNumber.isEmpty();
+    }
+
     private boolean doRegister(String id, String pw, String name, String phoneNumber, int age, String date) throws SQLException, ClassNotFoundException {
-        MemberManagement mm = new MemberManagement();
+        UserController mm = new UserController();
         return mm.insertMember(mm.createMember(id, pw, name, phoneNumber, age, date, ""));
     }
 %>

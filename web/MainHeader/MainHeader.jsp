@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="MainHeader.css">
+    <link rel="stylesheet" href="../MainHeader/MainHeader.css">
     <title>Header</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
     <a href="../Member/RegisterPage.jsp">회원 관리</a> <!--임시로 적용-->
     <a href="">대여 관리</a>
     <a href="../Notice/NoticePage.jsp">공지 관리</a>
-    <a href="">운영 관리</a>
+    <a href="../Management/ChoosePage.jsp">운영 관리</a>
     <a href="../MainPage/MainPage.jsp">메인 페이지</a>
 </div>
 </body>
