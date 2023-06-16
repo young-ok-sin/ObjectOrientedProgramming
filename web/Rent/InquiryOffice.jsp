@@ -11,18 +11,24 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="BicycleManage.RentalOfficeControl" %>
+<%@ page import="BicycleManage.RentalOffice" %>
+<%@ page import="java.util.List" %>
 <html>
 <head>
     <title>대여소 목록</title>
+    <link rel="stylesheet" href="InquiryOffice.css">
 </head>
 <body>
 <%
-    try {
-        RentalOfficeControl myDB = new RentalOfficeControl();
 
-        ResultSet resultSet = myDB.inquiryOffice();
+        List<RentalOffice> list = null;
+        try {
+                RentalOfficeControl rentalOfficeControl = new  RentalOfficeControl(); // ConnectMyDB 클래스의 인스턴스 생성
 
-        // 테이블로 결과 출력
+                list = rentalOfficeControl.inquiryOffice(); // 선택된 대여소에 대한 자전거 조회
+
+
+                // 테이블로 결과 출력
 %>
 <form action="SelectBicycle.jsp" method="post" onsubmit="return validateSelection();">
     <table>
@@ -32,12 +38,12 @@
             <!-- 추가 필요한 열들 -->
         </tr>
 
-        <% while (resultSet.next()) { %>
+        <% for(int i = 0;i<list.size();i++) { %>
         <tr>
             <td>
-                <input type="radio" name="selectedOffice" value="<%= resultSet.getString("officeID") %>">
+                <input type="radio" name="selectedOffice" value="<%= list.get(i).getOfficeID() %>">
             </td>
-            <td><%= resultSet.getString("officeID") %></td>
+            <td><%= list.get(i).getOfficeID() %></td>
             <!-- 추가 필요한 열들 -->
         </tr>
         <% } %>
@@ -49,7 +55,7 @@
     </div>
 </form>
 <%
-        myDB.getConnectMyDB().disConnectMyDB(); // DB 연결 해제
+
     } catch (SQLException e) {
         // SQLException 처리
         e.printStackTrace();
@@ -57,6 +63,7 @@
         // ClassNotFoundException 처리
         e.printStackTrace();
     }
+
 %>
 
 <script>

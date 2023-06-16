@@ -17,6 +17,7 @@
 <%@ page import="java.util.List" %>
 <html>
 <head>
+    <link rel="stylesheet" href="SelectBicycle.css">
     <title>선택된 자전거 조회</title>
 </head>
 <body>

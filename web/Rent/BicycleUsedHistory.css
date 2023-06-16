@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header-layout {
+    background-color: #ffbeac;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.header-layout .my-logo {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+}
+
+.header-layout a {
+    text-decoration: none;
+    color: black;
+    font-family: 'omyu_pretty';
+    width: 100px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: normal;
+    font-weight: bold;
+    border: none;
+    margin: 0 0.6rem;
+}

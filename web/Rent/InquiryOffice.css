@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header-layout {
+    background-color: #ffbeac;
+    height: 80px;
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+}
+
+.header-layout .my-logo {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+}
+
+.header-layout a {
+    text-decoration: none;
+    color: black;
+    font-family: 'omyu_pretty';
+    width: 100px;
+    height: 50px;
+    display: flex; /* Make the links a flex container */
+    align-items: center; /* Align items vertically in the center */
+    justify-content: center; /* Align items horizontally in the center */
+    margin: 0.6rem;
+    font-style: normal;
+    font-weight: bold;
+    border: none;
+}
