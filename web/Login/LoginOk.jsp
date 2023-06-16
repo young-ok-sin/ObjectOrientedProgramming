@@ -1,4 +1,4 @@
-<%@ page import="MemberManage.MemberManagement" %>
+<%@ page import="MemberManage.UserController" %>
 <%@ page import="java.sql.SQLException" %><%--
   Created by IntelliJ IDEA.
   User: lks99
@@ -43,7 +43,7 @@
 </html>
 <%!
   private boolean doLogin(String id, String pwd) throws SQLException, ClassNotFoundException {
-    MemberManagement mm = new MemberManagement();
+    UserController mm = new UserController();
     return mm.isExist(id, pwd);
   }
 %>
