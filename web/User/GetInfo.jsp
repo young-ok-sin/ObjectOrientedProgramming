@@ -1,6 +1,7 @@
 <%@ page import="MemberManage.Member" %>
-<%@ page import="MemberManage.MemberManagement" %>
-<%@ page import="java.sql.SQLException" %><%--
+<%@ page import="MemberManage.UserController" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="MemberManage.InquiryInfo" %><%--
   Created by IntelliJ IDEA.
   User: lks99
   Date: 2023-06-13
@@ -35,7 +36,7 @@
 </html>
 <%!
   private Member getInfo(String id) throws SQLException, ClassNotFoundException {
-    MemberManagement mm = new MemberManagement();
+    InquiryInfo mm = new InquiryInfo();
     return mm.getMemberInfo(id);
   }
 %>
