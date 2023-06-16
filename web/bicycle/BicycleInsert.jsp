@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="./BicycleRegister.css">
+    <link rel="stylesheet" href="BicycleRegister.css">
     <title>자전거 등록</title>
     <script>
         var isDuplicate = false;
