@@ -14,6 +14,6 @@
 </head>
 <body>
 <button onclick="location.href='./Login/Login.jsp';">로그인 페이지로</button>
-<button onclick="location.href='./Member/RegisterPage.jsp';">회원가입 페이지로</button>
+<button onclick="location.href='./SignupUI/RegisterPage.jsp';">회원가입 페이지로</button>
 </body>
 </html>

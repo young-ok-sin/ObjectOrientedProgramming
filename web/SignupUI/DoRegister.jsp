@@ -1,4 +1,4 @@
-<%@ page import="MemberManage.MemberManagement" %>
+<%@ page import="MemberManage.UserController" %>
 <%@ page import="java.sql.SQLException" %><%--
   Created by IntelliJ IDEA.
   User: lks99
@@ -45,7 +45,7 @@
     }
 
     private boolean doRegister(String id, String pw, String name, String phoneNumber, int age, String date) throws SQLException, ClassNotFoundException {
-        MemberManagement mm = new MemberManagement();
+        UserController mm = new UserController();
         return mm.insertMember(mm.createMember(id, pw, name, phoneNumber, age, date, ""));
     }
 %>
