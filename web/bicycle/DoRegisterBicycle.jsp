@@ -23,8 +23,8 @@
     else {
         url = "../ResultPage/Fail.jsp";
     }
+    response.sendRedirect(url);
 %>
-<jsp:forward page="<%= url %>"></jsp:forward>
 </body>
 </html>
 <%!

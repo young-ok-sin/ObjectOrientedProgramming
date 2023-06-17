@@ -12,7 +12,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="../MainHeader/MainHeader.css">
-    <link rel="stylesheet" href="ChoosePage.css">
+    <link rel="stylesheet" href="./ChoosePage.css">
     <title>등록 선택</title>
 </head>
 <body>
