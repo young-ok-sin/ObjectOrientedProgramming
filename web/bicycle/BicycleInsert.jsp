@@ -8,8 +8,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="./BicycleRegister.css">
+    <link rel="stylesheet" href="BicycleRegister.css">
     <title>자전거 등록</title>
+    <script>
+        var isDuplicate = false;
+        function validateForm() {
+
+            var rentalOfficeId = document.forms["registerForm"]["rent_id"].value;
+            var bicycleId = document.forms["registerForm"]["bicycle_id"].value;
+
+            if (rentalOfficeId == "" || bicycleId == "" ) {
+                alert("모든 항목을 입력하세요.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
     <jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
@@ -21,13 +35,13 @@
             <div class="title">
                 기장군 공영자전거 무인대여 시스템
             </div>
-            <form action="DoRegisterBicycle.jsp" class="content-body" method="post">
+            <form name = "registerForm" action="DoRegisterBicycle.jsp" class="content-body" onsubmit="return validateForm()" method="post">
                 <div class = "input-form">
                     <div class = "bicycle_Id">
-                        <input type = "text" name = "bicycle_id" placeholder="신규 자전거 ID를 입력하세요.">
+                        <input type = "text" name = "bicycle_id" placeholder="신규 자전거 ID">
                     </div>
                     <div class = "rentalOffcie_Id">
-                        <input type = "text" name = "rent_id" placeholder="해당 자전거가 속할 대여소 ID를 입력하세요">
+                        <input type = "text" name = "rent_id" placeholder="해당 자전거의 대여소 ID">
                     </div>
                     <div class = "button">
                         <button class = "register_btn"> 등록
