@@ -60,12 +60,5 @@ public class RentalOfficeControl {
 
         return result == 1;
     }
-    public boolean checkForDuplicateOfficeID(String officeID) throws SQLException {
-        String query = "SELECT * FROM rentaloffice WHERE officeID = ?";
-        PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
-        pstmt.setString(1, officeID);
-        ResultSet resultSet = pstmt.executeQuery();
 
-        return resultSet.next();
-    }
 }
