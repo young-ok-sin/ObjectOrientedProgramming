@@ -1,11 +1,6 @@
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="BicycleManage.BicycleControl" %><%--
-  Created by IntelliJ IDEA.
-  User: duddhr
-  Date: 2023-06-14
-  Time: 오후 8:00
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="BicycleManage.BicycleControl" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -17,13 +12,19 @@
     String bicycle_Id = request.getParameter("bicycle_id");
     String rentalOffcie_Id = request.getParameter("rent_id");
     String url = "";
-    if(DoRegisterBicycle(bicycle_Id, rentalOffcie_Id)) {
-        url = "../ResultPage/Success.jsp";
+
+    BicycleControl bi = new BicycleControl();
+    if (bi.isRentalOfficeFull(rentalOffcie_Id)) {
+        // 최대 자전거 수 초과 에러 메시지 출력
+        out.println("<script>alert('해당 대여소의 최대 자전거 수를 초과하였습니다.'); history.go(-1);</script>");
+    } else {
+        if (bi.insertBicycle(bi.createBicycle(bicycle_Id, rentalOffcie_Id))) {
+            url = "../ResultPage/Success.jsp";
+        } else {
+            url = "../ResultPage/Fail.jsp";
+        }
+        response.sendRedirect(url);
     }
-    else {
-        url = "../ResultPage/Fail.jsp";
-    }
-    response.sendRedirect(url);
 %>
 </body>
 </html>
