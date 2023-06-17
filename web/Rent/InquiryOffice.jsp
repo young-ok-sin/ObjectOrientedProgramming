@@ -5,7 +5,8 @@
   Time: 오후 12:51
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ page import="JDBC.ConnectMyDB" %>
 <%@ page import="java.sql.Date" %>
 <%@ page import="java.sql.ResultSet" %>
@@ -16,21 +17,21 @@
 <html>
 <head>
     <title>대여소 목록</title>
-    <link rel="stylesheet" href="InquiryOffice.css">
+    <link rel="stylesheet" href="./InquiryOffice.css">
 </head>
+<jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
 <body>
 <%
-
         List<RentalOffice> list = null;
         try {
                 RentalOfficeControl rentalOfficeControl = new  RentalOfficeControl(); // ConnectMyDB 클래스의 인스턴스 생성
-
                 list = rentalOfficeControl.inquiryOffice(); // 선택된 대여소에 대한 자전거 조회
-
 
                 // 테이블로 결과 출력
 %>
+
 <form action="SelectBicycle.jsp" method="post" onsubmit="return validateSelection();">
+
     <table>
         <tr>
             <th>Select</th>

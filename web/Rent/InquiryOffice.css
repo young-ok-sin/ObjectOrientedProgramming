@@ -1,32 +1,46 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table th,
+table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* 버튼 스타일 */
+.button {
+    margin-top: 20px;
+}
+
+.button input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #ffbeac;
+    color: #000;
+    border: none;
+    cursor: pointer;
+}
+.button input[type="submit"]:focus {
+    outline: none;
+}
+
+/* 경고 메시지 스타일 */
+.alert {
+    color: #000;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* 예시에서 사용되는 추가 스타일 */
 body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-.header-layout {
-    background-color: #ffbeac;
-    height: 80px;
-    display: flex;
-    align-items: center; /* Align items vertically in the center */
-}
-
-.header-layout .my-logo {
-    width: 100px;
-    height: 100px;
-    margin: 0;
-}
-
-.header-layout a {
-    text-decoration: none;
-    color: black;
-    font-family: 'omyu_pretty';
-    width: 100px;
-    height: 50px;
-    display: flex; /* Make the links a flex container */
-    align-items: center; /* Align items vertically in the center */
-    justify-content: center; /* Align items horizontally in the center */
-    margin: 0.6rem;
-    font-style: normal;
-    font-weight: bold;
-    border: none;
 }

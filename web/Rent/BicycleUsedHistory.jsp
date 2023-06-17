@@ -1,54 +1,29 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lee so rim
-  Date: 2023-06-09
-  Time: 오후 7:44
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="BicycleManage.BicycleUsedHistoryControl" %>
-<%@ page import="BicycleManage.BicycleUsedHistoryControl" %>
+<%@ page import="BicycleManage.BicycleUsedHistory" %>
 <html>
 <head>
-    <title>자전거 이용 현황 조회</title>
+    <link rel="stylesheet" href="./BicycleUsedHistory.css">
+    <title>대여소별 이용내역 조회</title>
 </head>
 <body>
-<%
-  try {
-    BicycleUsedHistoryControl bicycleUsedHistoryControl = new BicycleUsedHistoryControl();
+<h1>대여소별 이용내역 조회</h1>
 
-    ResultSet resultSet = bicycleUsedHistoryControl.selectAllOperationallStatisticsByBicycle();
-     // 테이블로 결과 출력
-%>
+<%-- 대여소 이름과 이용횟수를 표시하는 테이블 --%>
 <table>
-  <tr>
-    <th>BicycleUsedHistory</th>
-    <!-- 추가 필요한 열들 -->
-  </tr>
+    <tr>
+        <th>대여소 이름</th>
+        <th>이용 횟수</th>
 
-  <% while (resultSet.next()) { %>
-  <tr>
-    <td> 사용자 번호 <%= resultSet.getString("usedpk") %></td>
-    <td> 자전거 ID <%= resultSet.getString("bicycleID") %></td>
-    <td> 대여소 ID <%= resultSet.getString("fk_officeID") %></td>
-    <td> 회원 ID <%= resultSet.getString("memberID") %></td>
-    <td> 사용 거리 <%= resultSet.getString("usedDistance") %></td>
-    <td> 사용 날짜 <%= resultSet.getString("usedDate") %></td>
-    <td> 반납 상태 <%= resultSet.getString("isRent") %></td>
-    <td> 반납 날짜 <%= resultSet.getString("alterTime") %></td>
-  </tr>
-  <% } %>
 </table>
-<%
-  } catch (SQLException e) {
-  // SQLException 처리
-  e.printStackTrace();
-  } catch (ClassNotFoundException e) {
-  // ClassNotFoundException 처리
-  e.printStackTrace();
-  }
-%>
+<button onclick="history.back()">뒤로가기</button>
+<button onclick="goToBicycleUsedHistoryDetails()">상세보기</button>
 </body>
-</html>
+<script>
+    function goToBicycleUsedHistoryDetails() {
+        window.location.href = "BicycleUsedHistoryDetails.jsp";
+    }
+</script>

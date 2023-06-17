@@ -21,34 +21,32 @@
     <title>선택된 자전거 조회</title>
 </head>
 <body>
-
+<form action="BicycleRentSuccess.jsp" method="post" onsubmit="return validateSelection();">
 <%
+    String selectedOffice = "";
     List<Bicycle> list = null;
     try {
-        String selectedOffice = request.getParameter("selectedOffice");
+         selectedOffice = request.getParameter("selectedOffice");
         if (selectedOffice != null && !selectedOffice.isEmpty()) {
-            BicycleControl bicycleControll = new BicycleControl(); // ConnectMyDB 클래스의 인스턴스 생성
+            BicycleControl bicycleControl = new BicycleControl(); // ConnectMyDB 클래스의 인스턴스 생성
 
-            list = bicycleControll.createDTO(selectedOffice); // 선택된 대여소에 대한 자전거 조회
+            list = bicycleControl.createDTO(selectedOffice); // 선택된 대여소에 대한 자전거 조회
 
             // 결과 출력
 %>
-<form action="BicycleRentSuccess.jsp" method="post" onsubmit="return validateSelection();">
 <table>
     <tr>
-        <th>Bicycle ID</th>
-        <!-- 추가 필요한 열들 -->
+        <th>자전거 선택</th>
     </tr>
-
+    <input class="text" name="selectedOffice" value="<%=selectedOffice%>" readonly>
     <% for(int i = 0;i<list.size();i++) { %>
     <td>
         <input type="radio" name="selectedBicycle" value="<%= list.get(i).getBicycleID() %>">
     </td>
-    <td><%= list.get(i).getBicycleID() %></td>
+    <td><%= list.get(i).getBicycleID()%></td>
     <!-- 추가 필요한 열들 -->
     </tr>
     <% } %>
-
 </table>
 <%
         }
@@ -60,14 +58,10 @@
         e.printStackTrace();
     }
 %>
-
-
     <div class="button">
-        <!--<input type="submit" value="cancel">-->
         <input type="submit" value="대여하기">
     </div>
 </form>
-
 <script>
     function validateSelection() {
         var selectedBicycle = document.querySelector('input[name="selectedBicycle"]:checked');
@@ -75,8 +69,10 @@
             alert("자전거를 선택해주세요.");
             return false; // 폼 제출 중지
         }
+
         return true; // 폼 제출 계속
     }
 </script>
 </body>
 </html>
+

@@ -1,33 +1,49 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
 }
 
-.header-layout {
+h1 {
+    text-align: center;
+}
+
+/* 테이블 스타일 */
+table {
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+table th,
+table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 버튼 스타일 */
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
     background-color: #ffbeac;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
+    color: #000;
+    border: none;
+    cursor: pointer;
 }
 
-.header-layout .my-logo {
-    width: 100px;
-    height: 100px;
-    margin: 0;
+button:focus {
+    outline: none;
 }
 
-.header-layout a {
+/* 예시에서 사용되는 추가 스타일 */
+a {
     text-decoration: none;
     color: black;
-    font-family: 'omyu_pretty';
-    width: 100px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-style: normal;
-    font-weight: bold;
-    border: none;
-    margin: 0 0.6rem;
 }
