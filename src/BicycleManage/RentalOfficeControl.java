@@ -42,14 +42,14 @@ public class RentalOfficeControl {
     }
     public List<RentalOffice> inquiryOffice() throws SQLException {
         List<RentalOffice> list = new ArrayList<>();
-        String query = "SELECT * FROM rentaloffice";
+        String query = "SELECT officeID FROM rentaloffice";
         connectMyDB.setResultSet(connectMyDB.getStatement().executeQuery(query));
         PreparedStatement pstm = connectMyDB.getConnection().prepareStatement(query);
         ResultSet rs = pstm.executeQuery();
         while(rs.next()) {
             RentalOffice rentalOffice2 = new RentalOffice();
             rentalOffice2.setOfficeID(rs.getString("officeID"));
-            list.add(rentalOffice);
+            list.add(rentalOffice2);
         }
         connectMyDB.disConnectMyDB();
         return list;

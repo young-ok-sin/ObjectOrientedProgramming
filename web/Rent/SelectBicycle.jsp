@@ -17,47 +17,62 @@
 <%@ page import="java.util.List" %>
 <html>
 <head>
-    <link rel="stylesheet" href="SelectBicycle.css">
     <title>선택된 자전거 조회</title>
+    <link rel="stylesheet" href="./SelectBicycle.css">
 </head>
+<jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
 <body>
 <form action="BicycleRentSuccess.jsp" method="post" onsubmit="return validateSelection();">
-<%
-    String selectedOffice = "";
-    List<Bicycle> list = null;
-    try {
-         selectedOffice = request.getParameter("selectedOffice");
-        if (selectedOffice != null && !selectedOffice.isEmpty()) {
-            BicycleControl bicycleControl = new BicycleControl(); // ConnectMyDB 클래스의 인스턴스 생성
+    <%
+        String member = (String)session.getAttribute("user_id");
+        String selectedOffice = "";
+        List<Bicycle> list = null;
 
-            list = bicycleControl.createDTO(selectedOffice); // 선택된 대여소에 대한 자전거 조회
+        try {
+            selectedOffice = request.getParameter("selectedOffice");
+            if (selectedOffice != null && !selectedOffice.isEmpty()) {
+                BicycleControl bicycleControl = new BicycleControl(); // ConnectMyDB 클래스의 인스턴스 생성
+                list = bicycleControl.createDTO(selectedOffice); // 선택된 대여소에 대한 자전거 조회
 
-            // 결과 출력
-%>
-<table>
-    <tr>
-        <th>자전거 선택</th>
-    </tr>
-    <input class="text" name="selectedOffice" value="<%=selectedOffice%>" readonly>
-    <% for(int i = 0;i<list.size();i++) { %>
-    <td>
-        <input type="radio" name="selectedBicycle" value="<%= list.get(i).getBicycleID() %>">
-    </td>
-    <td><%= list.get(i).getBicycleID()%></td>
-    <!-- 추가 필요한 열들 -->
-    </tr>
-    <% } %>
-</table>
-<%
+                if (list.isEmpty()) {
+    %>
+    <script>
+        window.onload = function() {
+            alert("선택한 대여소에 대여 가능한 자전거가 없습니다.");
+            window.location.href = "../Rent/BicycleRent.jsp"; // 대여 페이지로 이동
+        };
+    </script>
+    <%
+    } else {
+    %>
+    <fieldset>
+        <legend>Select Bicycle</legend>
+        <% for(int i = 0;i<list.size();i++) { %>
+        <div class="selectContainer">
+            <div class="bicycle">
+                <img class="bicycle-logo" src="../img/bicycle_oos.png" alt="logo">
+            </div>
+            <div class="bicycleInfo">
+            <input type="radio" name="selectedBicycle" value="<%= list.get(i).getBicycleID() %>">
+            <label><%= list.get(i).getBicycleID() %></label>
+            <div>
+            <label>상태 : 대여가능</label>
+            </div>
+            </div>
+        </div>
+        <% } %>
+    </fieldset>
+    <%
+                }
+            }
+        } catch (SQLException e) {
+            // SQLException 처리
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // ClassNotFoundException 처리
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        // SQLException 처리
-        e.printStackTrace();
-    } catch (ClassNotFoundException e) {
-        // ClassNotFoundException 처리
-        e.printStackTrace();
-    }
-%>
+    %>
     <div class="button">
         <input type="submit" value="대여하기">
     </div>
@@ -69,10 +84,8 @@
             alert("자전거를 선택해주세요.");
             return false; // 폼 제출 중지
         }
-
         return true; // 폼 제출 계속
     }
 </script>
 </body>
 </html>
-

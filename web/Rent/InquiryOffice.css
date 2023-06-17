@@ -13,6 +13,14 @@ table th {
     background-color: #f2f2f2;
     font-weight: bold;
 }
+p,
+label {
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input {
+    margin: 0.4rem;
+}
 
 /* 버튼 스타일 */
 .button {

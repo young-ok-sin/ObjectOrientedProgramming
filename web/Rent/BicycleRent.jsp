@@ -13,7 +13,6 @@
 <%@ page import="BicycleManage.BicycleUsedHistoryControl" %>
 <html>
 <head>
-    <link rel="stylesheet" href="../MainHeader/MainHeader.css">
     <link rel="stylesheet" href="./BicycleRent.css">
     <title>자전거 대여</title>
 </head>

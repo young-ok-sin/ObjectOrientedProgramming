@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+div{
+    display: block;
+}
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #ffbeac;
+    color: #000;
+    border: none;
+    cursor: pointer;
+}
+label {
+    font: 1rem 'Fira Sans', sans-serif;
+}

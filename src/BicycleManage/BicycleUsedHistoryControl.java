@@ -13,7 +13,6 @@ public class BicycleUsedHistoryControl {
     Bicycle bicycle;
     BicycleControl bicycleControl = null;
     ConnectMyDB connectMyDB = null;
-
     public BicycleUsedHistory getBicycleUsedHistory() {
 
         return bicycleUsedHistory;
@@ -42,26 +41,48 @@ public class BicycleUsedHistoryControl {
         connectMyDB = new ConnectMyDB();
     }
 
-    public List<BicycleUsedHistory> selectAllOperationallStatisticsByBicycle() throws SQLException {
-        System.out.println("selectAllOperationallStatisticsByBicycle");
+    public List<BicycleUsedHistory> selectAllOperationallStatisticsByBicycle(String member_id) throws SQLException {
         List<BicycleUsedHistory> list = new ArrayList<>();
-        String query = "SELECT * FROM bicycleusedhistory";
+        String query = "SELECT * FROM bicycleusedhistory WHERE memberID = ?";
         PreparedStatement pstm = connectMyDB.getConnection().prepareStatement(query);
+        pstm.setString(1, member_id);
+
         ResultSet rs = pstm.executeQuery();
-        while (rs.next()) {
-            bicycleUsedHistory.setUsedpk(rs.getInt("usedpk"));
-            bicycleUsedHistory.setBicycleID(rs.getString("bicycleID"));
-            bicycleUsedHistory.setFk_office(rs.getString("fk_officeID"));
-            bicycleUsedHistory.setMemberID(rs.getString("memberID"));
-            bicycleUsedHistory.setUsedDistance(rs.getFloat("usedDistance"));
-            bicycleUsedHistory.setUsedDate(rs.getDate("usedDate"));
-            bicycleUsedHistory.setIsRent(rs.getInt("isRent"));
-            bicycleUsedHistory.setAlterTime(rs.getDate("alterTime"));
-            list.add(bicycleUsedHistory);
+        while(rs.next()) {
+            BicycleUsedHistory bicycleUsedHistory2 = new BicycleUsedHistory();
+            bicycleUsedHistory2.setFk_office(rs.getString("fk_officeID"));
+            bicycleUsedHistory2.setUsedDate(rs.getDate("usedDate"));
+            bicycleUsedHistory2.setUsedDistance(rs.getFloat("usedDistance"));
+            bicycleUsedHistory2.setBicycleID(rs.getString("bicycleID"));
+            list.add(bicycleUsedHistory2);
         }
         connectMyDB.disConnectMyDB();
         return list;
     }
+
+    public List<BicycleUsedHistory> officeCount(String member_id) throws SQLException {
+        BicycleUsedHistory bicycleUsedHistory2 = new BicycleUsedHistory();
+        System.out.println("officeCount "+member_id);
+        List<BicycleUsedHistory> resultList = new ArrayList<>();//최종출력
+
+        String query = "SELECT fk_officeID, count(*) count FROM bicycleusedhistory WHERE memberID = ? group by fk_officeID";
+        PreparedStatement pstm = connectMyDB.getConnection().prepareStatement(query);
+        pstm.setString(1, member_id);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {
+            String fk_officeID = rs.getString("fk_officeID");
+            int office_count = rs.getInt("count");
+
+            bicycleUsedHistory2 = new BicycleUsedHistory();
+            bicycleUsedHistory2.setFk_office(fk_officeID);
+            bicycleUsedHistory2.setOfficeCount(office_count);
+
+            resultList.add(bicycleUsedHistory2);
+        }
+        connectMyDB.disConnectMyDB();
+        return resultList;
+    }
+
 
     public void addHistory(String bicycleID) throws SQLException {
 

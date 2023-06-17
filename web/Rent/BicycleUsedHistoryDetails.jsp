@@ -14,34 +14,35 @@
 <html>
 <head>
     <title>상세보기</title>
+  <link rel="stylesheet" href="./BicycleUsedHistoryDetails.css">
 </head>
+<jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
 <body>
 <%
+  String member = (String)session.getAttribute("user_id");
   List<BicycleUsedHistory> list = null;
     try {
       BicycleUsedHistoryControl bicycleUsedHistoryControl = new BicycleUsedHistoryControl();
-      list = bicycleUsedHistoryControl.selectAllOperationallStatisticsByBicycle();
+      list = bicycleUsedHistoryControl.selectAllOperationallStatisticsByBicycle(member);
 
 %>
-<table>
-  <tr>
-    <th>상세보기</th>
-    <!-- 추가 필요한 열들 -->
-  </tr>
-
-  <% for(int i = 0;i<list.size();i++) { %>
-  <tr>
-    <td> 사용자 번호 <%=list.get(i).getUsedpk()%></td>
-    <td> 자전거 ID <%=list.get(i).getBicycleID() %></td>
-    <td> 대여소 ID <%= list.get(i).getFk_office() %></td>
-    <td> 회원 ID <%= list.get(i).getMemberID() %></td>
-    <td> 사용 거리 <%= list.get(i).getUsedDistance() %></td>
-    <td> 사용 날짜 <%= list.get(i).getBicycleID() %></td>
-    <td> 반납 상태 <%=list.get(i).getIsRent()%></td>
-    <td> 반납 날짜 <%= list.get(i).getAlterTime() %></td>
-  </tr>
-  <% } %>
-</table>
+<% for(int i = 0;i<list.size();i++) { %>
+<fieldset>
+  <legend>대여소이름=<%= list.get(i).getFk_office() %></legend>
+  <div>
+    <label>이용 날짜</label>
+    <label><%= list.get(i).getUsedDate() %></label>
+  </div>
+  <div>
+    <label>이용 거리</label>
+    <label><%=list.get(i).getUsedDistance() %></label>
+  </div>
+  <div>
+    <label>자전거 번호</label>
+    <label><%=list.get(i).getBicycleID() %></label>
+  </div>
+</fieldset>
+<% } %>
 <%
   } catch (SQLException e) {
   // SQLException 처리
@@ -51,5 +52,6 @@
   e.printStackTrace();
   }
 %>
+<button onclick="history.back()">돌아가기</button>
 </body>
 </html>

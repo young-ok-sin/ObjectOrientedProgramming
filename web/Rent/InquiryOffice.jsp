@@ -22,49 +22,42 @@
 <jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
 <body>
 <%
-        List<RentalOffice> list = null;
-        try {
-                RentalOfficeControl rentalOfficeControl = new  RentalOfficeControl(); // ConnectMyDB 클래스의 인스턴스 생성
-                list = rentalOfficeControl.inquiryOffice(); // 선택된 대여소에 대한 자전거 조회
+    List<RentalOffice> list = null;
+    try {
+        RentalOfficeControl rentalOfficeControl = new  RentalOfficeControl();
+        list = rentalOfficeControl.inquiryOffice();
 
-                // 테이블로 결과 출력
+        if (list.isEmpty()) {
 %>
-
+<script>
+    alert("등록된 대여소가 없습니다.");
+    window.location.href = "../Rent/BicycleRent.jsp";// 대여 페이지로 이동
+</script>
+<%
+} else {
+%>
 <form action="SelectBicycle.jsp" method="post" onsubmit="return validateSelection();">
-
-    <table>
-        <tr>
-            <th>Select</th>
-            <th>Office</th>
-            <!-- 추가 필요한 열들 -->
-        </tr>
-
-        <% for(int i = 0;i<list.size();i++) { %>
-        <tr>
-            <td>
-                <input type="radio" name="selectedOffice" value="<%= list.get(i).getOfficeID() %>">
-            </td>
-            <td><%= list.get(i).getOfficeID() %></td>
-            <!-- 추가 필요한 열들 -->
-        </tr>
+    <fieldset>
+        <legend>Select Office</legend>
+        <% for(int i = 0; i < list.size(); i++) { %>
+        <div>
+            <input type="radio" name="selectedOffice" value="<%= list.get(i).getOfficeID() %>">
+            <label><%= list.get(i).getOfficeID() %></label>
+        </div>
         <% } %>
-    </table>
+    </fieldset>
 
-    <div class="button" >
-        <!--<input type="submit" value="cancel">-->
+    <div class="button">
         <input type="submit" value="대여소 선택">
     </div>
 </form>
 <%
-
+        }
     } catch (SQLException e) {
-        // SQLException 처리
         e.printStackTrace();
     } catch (ClassNotFoundException e) {
-        // ClassNotFoundException 처리
         e.printStackTrace();
     }
-
 %>
 
 <script>
@@ -72,9 +65,9 @@
         var selectedOffice = document.querySelector('input[name="selectedOffice"]:checked');
         if (!selectedOffice) {
             alert("대여소를 선택해주세요.");
-            return false; // 폼 제출 중지
+            return false;
         }
-        return true; // 폼 제출 계속
+        return true;
     }
 </script>
 </body>
