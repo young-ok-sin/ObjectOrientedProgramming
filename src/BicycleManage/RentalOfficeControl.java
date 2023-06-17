@@ -36,8 +36,9 @@ public class RentalOfficeControl {
         rentalOffice.setOfficeID(rentalOffice_id);
         rentalOffice.setName(rentalOfficeName);
         rentalOffice.setLocation(rentalofficePos);
-        rentalOffice.setMaximumBicycleCnt(rentalOfficeMax);
         rentalOffice.setCurrentBicycleCnt(0);
+        rentalOffice.setMaximumBicycleCnt(rentalOfficeMax);
+
         return rentalOffice;
     }
     public List<RentalOffice> inquiryOffice() throws SQLException {
@@ -62,8 +63,9 @@ public class RentalOfficeControl {
             pstmt.setString(1, rentalOffice.getOfficeID());
             pstmt.setString(2, rentalOffice.getName());
             pstmt.setString(3, rentalOffice.getLocation());
-            pstmt.setInt(4, rentalOffice.getMaximumBicycleCnt());
-            pstmt.setInt(5,  rentalOffice.getCurrentBicycleCnt());
+            pstmt.setInt(4,  rentalOffice.getCurrentBicycleCnt());
+            pstmt.setInt(5, rentalOffice.getMaximumBicycleCnt());
+
             result = pstmt.executeUpdate();
         } catch(SQLException e) {
             System.out.println("ERROR: CANNOT INSERT");
@@ -72,5 +74,6 @@ public class RentalOfficeControl {
 
         return result == 1;
     }
+
 
 }
