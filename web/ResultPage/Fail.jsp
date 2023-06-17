@@ -9,7 +9,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="../MainHeader/MainHeader.css">
-<%--    <link rel="stylesheet" href="./Result.css">--%>
+    <link rel="stylesheet" href="./Result.css">
     <title>Fail</title>
 </head>
 <body>

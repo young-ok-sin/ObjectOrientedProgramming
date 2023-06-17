@@ -13,29 +13,28 @@
 </head>
 <body>
 <%
-  request.setCharacterEncoding("UTF-8");
-  String rentalOffice_Id = request.getParameter("rentalOffice_id");
-  String rentalOffice_Name = request.getParameter("rentaloffice_name");
-  String location= request.getParameter("rentaloffice_pos");
-  String maximumBicycleCntStr = request.getParameter("rentaloffice_max");
+    request.setCharacterEncoding("UTF-8");
+    String rentalOffice_Id = request.getParameter("rentalOffice_id");
+    String rentalOffice_Name = request.getParameter("rentaloffice_name");
+    String location = request.getParameter("rentaloffice_pos");
+    String maximumBicycleCntStr = request.getParameter("rentaloffice_max");
 
-  int maximumBicycleCnt = 0;
-  maximumBicycleCnt = Integer.parseInt(maximumBicycleCntStr);
+    int maximumBicycleCnt = 0;
+    maximumBicycleCnt = Integer.parseInt(maximumBicycleCntStr);
 
-  String url = "";
-  if(DoRegisterRentalOffice(rentalOffice_Id, rentalOffice_Name,location,maximumBicycleCnt)) {
-    url = "../ResultPage/Success.jsp";
-  }
-  else {
-    url = "../ResultPage/Fail.jsp";
-  }
+    String url = "";
+    if (DoRegisterRentalOffice(rentalOffice_Id, rentalOffice_Name, location, maximumBicycleCnt)) {
+        url = "../ResultPage/Success.jsp";
+    } else {
+        url = "../ResultPage/Fail.jsp";
+    }
+    response.sendRedirect(url);
 %>
-<jsp:forward page="<%= url %>"></jsp:forward>
 </body>
 </html>
 <%!
-  private boolean DoRegisterRentalOffice(String rentalOffice_Id, String rentalOffice_Name, String location, int maximumBicycleCnt) throws SQLException, ClassNotFoundException {
-    RentalOfficeControl rental = new RentalOfficeControl();
-    return rental.insertOffice(rental.createRentalOffice(rentalOffice_Id,rentalOffice_Name,location,maximumBicycleCnt));
-  }
+    private boolean DoRegisterRentalOffice(String rentalOffice_Id, String rentalOffice_Name, String location, int maximumBicycleCnt) throws SQLException, ClassNotFoundException {
+        RentalOfficeControl rental = new RentalOfficeControl();
+        return rental.insertOffice(rental.createRentalOffice(rentalOffice_Id, rentalOffice_Name, location, maximumBicycleCnt));
+    }
 %>
