@@ -12,7 +12,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="../MainHeader/MainHeader.css">
-    <link rel="stylesheet" href="ChoosePage.css">
+    <link rel="stylesheet" href="./ChoosePage.css">
     <title>등록 선택</title>
 </head>
 <body>
@@ -26,12 +26,12 @@
                 기장군 공영자전거 무인대여 시스템
             </div>
         </div>
-        <form action = "BicycleRegister.jsp" class = "content-body" method="post">
+        <form action = "../bicycle/BicycleInsert.jsp" class = "content-body" method="post">
             <div class = "btn">
                 <input type = "submit" value = "자전거 등록하기">
             </div>
         </form>
-        <form action = "RentalOfficeRegister.jsp" class = "content-body" method="post">
+        <form action = "../rentshop/newRentalOfficeInput.jsp" class = "content-body" method="post">
             <div class = "btn">
                 <input type = "submit" value = "대여소 등록하기">
             </div>
