@@ -62,12 +62,34 @@ public class BicycleControl {
             pstmt.setFloat(5, bicycle.getUsedDistance());
             pstmt.setInt(6, bicycle.getIsRented());
             result = pstmt.executeUpdate();
-        } catch(SQLException e) {
+            if (result == 1) {
+                // 대여소의 현재 자전거 수 업데이트
+                updateBicycleCount(bicycle.getOfficeID(), 1);
+            }
+        } catch (SQLException e) {
             System.out.println("ERROR: CANNOT INSERT");
             e.printStackTrace();
         }
-
         return result == 1;
+    }
+    public void updateBicycleCount(String officeId, int deltaCount) throws SQLException {
+        String query = "UPDATE rentaloffice SET currentBicycleCnt = currentBicycleCnt + ? WHERE officeID = ?";
+        PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
+        pstmt.setInt(1, deltaCount);
+        pstmt.setString(2, officeId);
+        pstmt.executeUpdate();
+    }
+    public boolean isRentalOfficeFull(String rentalOfficeId) throws SQLException {
+        String query = "SELECT * FROM rentaloffice WHERE officeID=?";
+        PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
+        pstmt.setString(1, rentalOfficeId);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            int currentBicycleCnt = rs.getInt("currentBicycleCnt");
+            int maximumBicycleCnt = rs.getInt("maximumBicycleCnt");
+            return currentBicycleCnt >= maximumBicycleCnt;
+        }
+        return false;
     }
 //    public void insertBicycle(String bicycleID, String officeID)throws SQLException{
 //        String query = "INSERT INTO bicycle (bicycleId, rentalOfficeId) VALUES (?, ?)";

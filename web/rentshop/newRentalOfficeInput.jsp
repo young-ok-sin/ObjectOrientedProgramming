@@ -5,7 +5,6 @@
 
     <title>대여소 등록</title>
     <script>
-        var isDuplicate = false;
         function validateForm() {
 
             var rentalOfficeName = document.forms["registerForm"]["rentaloffice_name"].value;
