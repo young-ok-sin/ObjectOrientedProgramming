@@ -11,6 +11,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="BicycleManage.BicycleUsedHistoryControl" %>
 <%@ page import="BicycleManage.BicycleUsedHistory" %>
+<%@ page import="BicycleManage.Bicycle" %>
+<%@ page import="BicycleManage.BicycleControl" %>
 <html>
 <head>
     <title>상세보기</title>
@@ -21,18 +23,19 @@
 <%
   String member = (String)session.getAttribute("user_id");
   List<BicycleUsedHistory> list = null;
+  List<Bicycle> bicyclelist = null;
     try {
       BicycleUsedHistoryControl bicycleUsedHistoryControl = new BicycleUsedHistoryControl();
       list = bicycleUsedHistoryControl.selectAllOperationallStatisticsByBicycle(member);
 
 %>
+
 <% for(int i = 0;i<list.size();i++) { %>
 <fieldset>
   <legend>대여소이름=<%= list.get(i).getFk_office() %></legend>
-  <div>
+  <div class="selectContainer">
     <label>이용 날짜</label>
     <label><%= list.get(i).getUsedDate() %></label>
-  </div>
   <div>
     <label>이용 거리</label>
     <label><%=list.get(i).getUsedDistance() %></label>
@@ -41,10 +44,12 @@
     <label>자전거 번호</label>
     <label><%=list.get(i).getBicycleID() %></label>
   </div>
+  </div>
 </fieldset>
 <% } %>
 <%
-  } catch (SQLException e) {
+
+  }catch (SQLException e) {
   // SQLException 처리
   e.printStackTrace();
   } catch (ClassNotFoundException e) {

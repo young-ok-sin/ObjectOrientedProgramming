@@ -51,7 +51,7 @@
         <div class="selectContainer">
             <input name="selectedOffice" hidden="hidden" value="<%=selectedOffice%>">
             <div class="bicycle">
-                <img class="bicycle-logo" src="../img/bicycle_oos.png" alt="logo">
+                <img class="bicycle-logo" src="../img/bicycleLogo.png" alt="logo">
             </div>
             <div class="bicycleInfo">
             <input type="radio" name="selectedBicycle" value="<%= list.get(i).getBicycleID() %>">

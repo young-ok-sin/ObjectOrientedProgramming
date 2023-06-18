@@ -1,34 +1,18 @@
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-table th,
-table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-}
-
-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
 p,
 label {
-    font: 1rem 'Fira Sans', sans-serif;
+    font: 0.9rem 'Fira Sans', sans-serif; /* Reduce the font size */
 }
 
 input {
-    margin: 0.4rem;
+    margin: 0.2rem; /* Reduce the margin */
 }
 
-/* 버튼 스타일 */
 .button {
+    text-align: center;
     margin-top: 20px;
 }
-
 .button input[type="submit"] {
-    padding: 10px 20px;
+    padding: 8px 16px; /* Reduce the padding */
     background-color: #ffbeac;
     color: #000;
     border: none;
@@ -44,11 +28,23 @@ input {
     font-weight: bold;
     margin-top: 10px;
 }
-
-/* 예시에서 사용되는 추가 스타일 */
+.selectContainer{
+    display: flex;
+    justify-content: center;
+}
 body {
     background-color: #f5f5f5;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+}
+.selectContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px; /* Adjust the margin-bottom as needed */
+}
+fieldset {
+    max-width: 500px; /* Adjust the max-width as needed */
+    margin: 0 auto; /* Center-align the fieldset */
+    padding: 20px; /* Adjust the padding as needed */
 }

@@ -34,7 +34,19 @@ public class BicycleControl {
         }
         return null; // 일치하는 자전거가 없는 경우 null 반환
     }
-
+    public boolean allRented(List<Bicycle> bicyclelist){
+        int count = 0;
+        System.out.println(bicyclelist.size());
+        for(int i = 0;i<bicyclelist.size();i++){
+                if(bicyclelist.get(i).getIsRented()==1){
+                    count++;
+                }
+        }
+        if(count==bicyclelist.size()){
+            return true;
+        }
+        return false;
+    }
     public List<Bicycle> createDTO(String officeID) throws SQLException {
         String query = "SELECT * FROM bicycle WHERE officeID=? AND isRented = 0";
         PreparedStatement pstm = connectMyDB.getConnection().prepareStatement(query);
@@ -65,6 +77,7 @@ public class BicycleControl {
             bicyclelist.add(bicycle1);
         }
         connectMyDB.disConnectMyDB();
+        System.out.println(list.size());
         return list;
     }
 
