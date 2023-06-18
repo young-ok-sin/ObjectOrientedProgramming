@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+.selectContainer{
+    display: flex;
+    justify-content: center;
+}
+.bicycle .bicycle-logo {
+    width: 50px;
+    height: 50px;
+    display: flex;
+}
+.input-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+label {
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+.button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #ffbeac;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}

@@ -18,55 +18,65 @@
 <html>
 <head>
     <title>선택된 자전거 조회</title>
+    <link rel="stylesheet" href="./SelectBicycle.css">
 </head>
+<jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
 <body>
-
-<%
-    List<Bicycle> list = null;
-    try {
-        String selectedOffice = request.getParameter("selectedOffice");
-        if (selectedOffice != null && !selectedOffice.isEmpty()) {
-            BicycleControl bicycleControll = new BicycleControl(); // ConnectMyDB 클래스의 인스턴스 생성
-
-            list = bicycleControll.createDTO(selectedOffice); // 선택된 대여소에 대한 자전거 조회
-
-            // 결과 출력
-%>
 <form action="BicycleRentSuccess.jsp" method="post" onsubmit="return validateSelection();">
-<table>
-    <tr>
-        <th>Bicycle ID</th>
-        <!-- 추가 필요한 열들 -->
-    </tr>
+    <%
+        String member = (String)session.getAttribute("user_id");
+        String selectedOffice = "";
+        List<Bicycle> list = null;
 
-    <% for(int i = 0;i<list.size();i++) { %>
-    <td>
-        <input type="radio" name="selectedBicycle" value="<%= list.get(i).getBicycleID() %>">
-    </td>
-    <td><%= list.get(i).getBicycleID() %></td>
-    <!-- 추가 필요한 열들 -->
-    </tr>
-    <% } %>
+        try {
+            selectedOffice = request.getParameter("selectedOffice");
+            if (selectedOffice != null && !selectedOffice.isEmpty()) {
+                BicycleControl bicycleControl = new BicycleControl(); // ConnectMyDB 클래스의 인스턴스 생성
+                list = bicycleControl.createDTO(selectedOffice); // 선택된 대여소에 대한 자전거 조회
 
-</table>
-<%
+                if (list.isEmpty()) {
+    %>
+    <script>
+        window.onload = function() {
+            alert("선택한 대여소에 대여 가능한 자전거가 없습니다.");
+            window.location.href = "../Rent/BicycleRent.jsp"; // 대여 페이지로 이동
+        };
+    </script>
+    <%
+    } else {
+    %>
+    <fieldset>
+        <legend>Select Bicycle</legend>
+        <% for(int i = 0;i<list.size();i++) { %>
+        <div class="selectContainer">
+            <div class="bicycle">
+                <img class="bicycle-logo" src="../img/bicycle_oos.png" alt="logo">
+            </div>
+            <div class="bicycleInfo">
+            <input type="radio" name="selectedBicycle" value="<%= list.get(i).getBicycleID() %>">
+            <label><%= list.get(i).getBicycleID() %></label>
+            <div>
+            <label>상태 : 대여가능</label>
+            </div>
+            </div>
+        </div>
+        <% } %>
+    </fieldset>
+    <%
+                }
+            }
+        } catch (SQLException e) {
+            // SQLException 처리
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // ClassNotFoundException 처리
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        // SQLException 처리
-        e.printStackTrace();
-    } catch (ClassNotFoundException e) {
-        // ClassNotFoundException 처리
-        e.printStackTrace();
-    }
-%>
-
-
+    %>
     <div class="button">
-        <!--<input type="submit" value="cancel">-->
         <input type="submit" value="대여하기">
     </div>
 </form>
-
 <script>
     function validateSelection() {
         var selectedBicycle = document.querySelector('input[name="selectedBicycle"]:checked');
