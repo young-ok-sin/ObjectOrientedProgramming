@@ -22,7 +22,7 @@
 </head>
 <jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
 <body>
-<form action="BicycleRentSuccess.jsp" method="post" onsubmit="return validateSelection();">
+<form action="DoBicycleRent.jsp" method="post" onsubmit="return validateSelection();">
     <%
         String member = (String)session.getAttribute("user_id");
         String selectedOffice = "";
@@ -46,9 +46,10 @@
     } else {
     %>
     <fieldset>
-        <legend>Select Bicycle</legend>
+        <legend>Select Bicycle office: <%=selectedOffice%></legend>
         <% for(int i = 0;i<list.size();i++) { %>
         <div class="selectContainer">
+            <input name="selectedOffice" hidden="hidden" value="<%=selectedOffice%>">
             <div class="bicycle">
                 <img class="bicycle-logo" src="../img/bicycle_oos.png" alt="logo">
             </div>

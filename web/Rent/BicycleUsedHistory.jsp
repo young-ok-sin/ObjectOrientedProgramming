@@ -10,6 +10,7 @@
     <title>대여소별 이용내역 조회</title>
 </head>
 <body>
+<jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
 <%
     String member = (String)session.getAttribute("user_id");
     List<BicycleUsedHistory> list = null;
