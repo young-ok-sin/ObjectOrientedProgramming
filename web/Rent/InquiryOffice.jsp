@@ -30,8 +30,10 @@
         if (list.isEmpty()) {
 %>
 <script>
+    window.onload = function() {
     alert("등록된 대여소가 없습니다.");
     window.location.href = "../Rent/BicycleRent.jsp";// 대여 페이지로 이동
+    };
 </script>
 <%
 } else {
@@ -40,7 +42,7 @@
     <fieldset>
         <legend>Select Office</legend>
         <% for(int i = 0; i < list.size(); i++) { %>
-        <div>
+        <div class="selectContainer">
             <input type="radio" name="selectedOffice" value="<%= list.get(i).getOfficeID() %>">
             <label><%= list.get(i).getOfficeID() %></label>
         </div>
