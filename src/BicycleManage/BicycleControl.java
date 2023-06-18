@@ -9,15 +9,13 @@ import java.util.List;
 
 public class BicycleControl {
     Bicycle bicycle;
+    List<Bicycle> list = new ArrayList<>();
+    static List<Bicycle> bicyclelist = new ArrayList<>();
     ConnectMyDB connectMyDB = null;
     public BicycleControl() throws SQLException, ClassNotFoundException {
         bicycle = new Bicycle();
         connectMyDB = new ConnectMyDB();
     }
-    public ConnectMyDB getConnectMyDB() {
-        return connectMyDB;
-    }
-
     public Bicycle createBicycle (String id, String rentalOffice_id){
         bicycle.setBicycleID(id);
         bicycle.setOfficeID(rentalOffice_id);
@@ -27,9 +25,18 @@ public class BicycleControl {
         bicycle.setIsRented(0);
         return bicycle;
     }
+
+    public Bicycle getBicycleInfo (String bid){
+        for (Bicycle bicycle : bicyclelist) {
+            if (bicycle.getBicycleID().equals(bid)) {
+                return bicycle;
+            }
+        }
+        return null; // 일치하는 자전거가 없는 경우 null 반환
+    }
+
     public List<Bicycle> createDTO(String officeID) throws SQLException {
-        List<Bicycle> list = new ArrayList<>();
-        String query = "SELECT * FROM bicycle WHERE officeID=?";
+        String query = "SELECT * FROM bicycle WHERE officeID=? AND isRented = 0";
         PreparedStatement pstm = connectMyDB.getConnection().prepareStatement(query);
         pstm.setString(1, officeID);
 
@@ -38,6 +45,24 @@ public class BicycleControl {
             Bicycle bicycle1 = new Bicycle();
             bicycle1.setBicycleID(rs.getString("bicycleID"));
             list.add(bicycle1);
+        }
+        connectMyDB.disConnectMyDB();
+        return list;
+    }
+    public List<Bicycle> selectAll() throws SQLException {
+        String query = "SELECT * FROM bicycle";
+        PreparedStatement pstm = connectMyDB.getConnection().prepareStatement(query);
+
+        ResultSet rs = pstm.executeQuery();
+        while(rs.next()) {
+            Bicycle bicycle1 = new Bicycle();
+            bicycle1.setBicycleID(rs.getString("bicycleID"));
+            bicycle1.setOfficeID(rs.getString("officeID"));
+            bicycle1.setMemberID(rs.getString("memberID"));
+            bicycle1.setUsedDate(rs.getDate("usedDate"));
+            bicycle1.setUsedDistance(rs.getFloat("usedDistance"));
+            bicycle1.setIsRented(rs.getInt("isRented"));
+            bicyclelist.add(bicycle1);
         }
         connectMyDB.disConnectMyDB();
         return list;

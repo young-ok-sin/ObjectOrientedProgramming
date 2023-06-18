@@ -57,4 +57,6 @@ public class RentalOffice {
     public void setMaximumBicycleCnt(int maximumBicycleCnt) {
         this.maximumBicycleCnt = maximumBicycleCnt;
     }
+
+
 }

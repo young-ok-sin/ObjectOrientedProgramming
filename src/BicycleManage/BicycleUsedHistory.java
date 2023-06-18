@@ -7,7 +7,7 @@ public class BicycleUsedHistory {
     private int usedpk;
     private String bicycleID;
     private String fk_office;
-
+    private int officeCount;
 
     private String memberID;
     private float usedDistance;
@@ -17,6 +17,12 @@ public class BicycleUsedHistory {
     public int getUsedpk() {
         return usedpk;
     }
+
+    public int getOfficeCount() {
+        return officeCount;
+    }
+
+
     public BicycleUsedHistory() {
     }
 
@@ -92,5 +98,7 @@ public class BicycleUsedHistory {
     }
 
 
+    public void setOfficeCount(int officeCount) {this.officeCount = officeCount;
+    }
 }
 

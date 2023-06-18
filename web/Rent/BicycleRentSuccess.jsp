@@ -17,12 +17,16 @@
 <h>등록완료</h>
 <%
     String selectedBicycle = request.getParameter("selectedBicycle");
+    String selectedOffice = request.getParameter("selectedOffice");
+    String member = (String)session.getAttribute("user_id");
     try {
         BicycleControl bicycleControl = new BicycleControl();
+        BicycleUsedHistory bicycleUsedHistory = new BicycleUsedHistory();
         BicycleUsedHistoryControl bicycleUsedHistoryControl = new BicycleUsedHistoryControl();
         boolean bicycleStatus = true;
         bicycleControl.changeBicycleStatus(selectedBicycle,bicycleStatus);
-        bicycleUsedHistoryControl.addHistory(selectedBicycle);
+        bicycleUsedHistory=bicycleUsedHistoryControl.createBicycleUsedHistory(selectedBicycle,selectedOffice,member);
+        bicycleUsedHistoryControl.addHistory(bicycleUsedHistory.getBicycleID());
     } catch (SQLException e) {
         // SQLException 처리
         e.printStackTrace();
@@ -32,6 +36,5 @@
     }
     // 결과 출력
 %>
-
 </body>
 </html>
