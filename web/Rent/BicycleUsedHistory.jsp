@@ -45,12 +45,13 @@
 <h1>이용내역</h1>
         <% for(int i = 0;i<list.size();i++) { %>
     <fieldset>
-        <div>
-            <label>대여소 이름</label>
+        <div class = "field-office">
+            <label>대여소 이름: </label>
             <label><%= list.get(i).getFk_office() %></label>
         </div>
-        <div>
-            <label>이용 횟수</label>
+        <br>
+        <div class = "field-num">
+            <label>이용 횟수: </label>
             <label><%= list.get(i).getOfficeCount()%></label>
         </div>
     </fieldset>
