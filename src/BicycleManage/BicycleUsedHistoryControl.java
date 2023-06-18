@@ -24,6 +24,8 @@ public class BicycleUsedHistoryControl {
         bicycleControl = new BicycleControl();
         bicycleControl.selectAll();
         bicycle = bicycleControl.getBicycleInfo(bid);
+        bicycle.setUsedDate(new Date(System.currentTimeMillis()));
+        bicycle.setUsedDistance(5.5f);
         System.out.println("BicycleUsedHistory");
         System.out.println(bid + " " + oid);
         bicycleUsedHistory.setBicycleID(bid);
