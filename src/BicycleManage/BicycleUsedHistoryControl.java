@@ -2,9 +2,10 @@ package BicycleManage;
 
 import JDBC.ConnectMyDB;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.sql.*;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +63,6 @@ public class BicycleUsedHistoryControl {
 
     public List<BicycleUsedHistory> officeCount(String member_id) throws SQLException {
         BicycleUsedHistory bicycleUsedHistory2 = new BicycleUsedHistory();
-        System.out.println("officeCount "+member_id);
         List<BicycleUsedHistory> resultList = new ArrayList<>();//최종출력
 
         String query = "SELECT fk_officeID, count(*) count FROM bicycleusedhistory WHERE memberID = ? group by fk_officeID";
@@ -85,8 +85,6 @@ public class BicycleUsedHistoryControl {
 
 
     public void addHistory(String bicycleID) throws SQLException {
-
-        System.out.println("bicycleID = " + bicycleID);
         String query = "INSERT INTO bicycleusedhistory VALUES (DEFAULT,?,?,?,?,?,?,?)";
         PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
         pstmt.setString(1, bicycleID);
