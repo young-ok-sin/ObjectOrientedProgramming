@@ -5,56 +5,57 @@
   Time: 오후 12:51
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ page import="JDBC.ConnectMyDB" %>
 <%@ page import="java.sql.Date" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="BicycleManage.RentalOfficeControl" %>
+<%@ page import="BicycleManage.RentalOffice" %>
+<%@ page import="java.util.List" %>
 <html>
 <head>
     <title>대여소 목록</title>
+    <link rel="stylesheet" href="./InquiryOffice.css">
 </head>
+<jsp:include page="../MainHeader/MainHeader.jsp"></jsp:include>
 <body>
 <%
+    List<RentalOffice> list = null;
     try {
-        RentalOfficeControl myDB = new RentalOfficeControl();
+        RentalOfficeControl rentalOfficeControl = new  RentalOfficeControl();
+        list = rentalOfficeControl.inquiryOffice();
 
-        ResultSet resultSet = myDB.inquiryOffice();
-
-        // 테이블로 결과 출력
+        if (list.isEmpty()) {
+%>
+<script>
+    alert("등록된 대여소가 없습니다.");
+    window.location.href = "../Rent/BicycleRent.jsp";// 대여 페이지로 이동
+</script>
+<%
+} else {
 %>
 <form action="SelectBicycle.jsp" method="post" onsubmit="return validateSelection();">
-    <table>
-        <tr>
-            <th>Select</th>
-            <th>Office</th>
-            <!-- 추가 필요한 열들 -->
-        </tr>
-
-        <% while (resultSet.next()) { %>
-        <tr>
-            <td>
-                <input type="radio" name="selectedOffice" value="<%= resultSet.getString("officeID") %>">
-            </td>
-            <td><%= resultSet.getString("officeID") %></td>
-            <!-- 추가 필요한 열들 -->
-        </tr>
+    <fieldset>
+        <legend>Select Office</legend>
+        <% for(int i = 0; i < list.size(); i++) { %>
+        <div>
+            <input type="radio" name="selectedOffice" value="<%= list.get(i).getOfficeID() %>">
+            <label><%= list.get(i).getOfficeID() %></label>
+        </div>
         <% } %>
-    </table>
+    </fieldset>
 
-    <div class="button" >
-        <!--<input type="submit" value="cancel">-->
+    <div class="button">
         <input type="submit" value="대여소 선택">
     </div>
 </form>
 <%
-        myDB.getConnectMyDB().disConnectMyDB(); // DB 연결 해제
+        }
     } catch (SQLException e) {
-        // SQLException 처리
         e.printStackTrace();
     } catch (ClassNotFoundException e) {
-        // ClassNotFoundException 처리
         e.printStackTrace();
     }
 %>
@@ -64,9 +65,9 @@
         var selectedOffice = document.querySelector('input[name="selectedOffice"]:checked');
         if (!selectedOffice) {
             alert("대여소를 선택해주세요.");
-            return false; // 폼 제출 중지
+            return false;
         }
-        return true; // 폼 제출 계속
+        return true;
     }
 </script>
 </body>

@@ -1,5 +1,6 @@
 <%@ page import="MemberManage.UserController" %>
-<%@ page import="java.sql.SQLException" %><%--
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="BicycleManage.BicycleControl" %><%--
   Created by IntelliJ IDEA.
   User: lks99
   Date: 2023-06-10
