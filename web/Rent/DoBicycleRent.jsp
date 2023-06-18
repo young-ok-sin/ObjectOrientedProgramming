@@ -11,14 +11,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>등록완료!!</title>
+    <title>DoBicycleRent</title>
 </head>
 <body>
-<h>등록완료</h>
 <%
     String selectedBicycle = request.getParameter("selectedBicycle");
     String selectedOffice = request.getParameter("selectedOffice");
     String member = (String)session.getAttribute("user_id");
+    boolean result = false;
+    String url = "";
     try {
         BicycleControl bicycleControl = new BicycleControl();
         BicycleUsedHistory bicycleUsedHistory = new BicycleUsedHistory();
@@ -26,7 +27,11 @@
         boolean bicycleStatus = true;
         bicycleControl.changeBicycleStatus(selectedBicycle,bicycleStatus);
         bicycleUsedHistory=bicycleUsedHistoryControl.createBicycleUsedHistory(selectedBicycle,selectedOffice,member);
-        bicycleUsedHistoryControl.addHistory(bicycleUsedHistory.getBicycleID());
+        if(bicycleUsedHistory != null) {
+            result = true;
+            bicycleUsedHistoryControl.addHistory(bicycleUsedHistory.getBicycleID());
+        }
+
     } catch (SQLException e) {
         // SQLException 처리
         e.printStackTrace();
@@ -34,7 +39,12 @@
         // ClassNotFoundException 처리
         e.printStackTrace();
     }
-    // 결과 출력
+    if(result) {
+        url = "../ResultPage/Success.jsp";
+    }else {
+        url = "../ResultPage/Fail.jsp";
+    }
+    response.sendRedirect(url);
 %>
 </body>
 </html>

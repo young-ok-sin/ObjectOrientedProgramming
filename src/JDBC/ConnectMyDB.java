@@ -25,10 +25,6 @@ public class ConnectMyDB {
         return statement;
     }
 
-    public ResultSet getResultSet() {
-        return resultSet;
-    }
-
     public void setResultSet(ResultSet resultSet) {
         this.resultSet = resultSet;
     }

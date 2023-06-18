@@ -26,14 +26,18 @@
         int prevPage = 0;
         int nextPage = 0;
         List<Notice> list = doInquiryNoticeAll(currentPage);
-        for (int i = 0; i < list.size(); i++) {
-            out.println("<div class=\"list\">");
-            out.println("<div class=\"number\">번호: " + (i + 1) + "</div>");
-            out.println("<div class=\"date\">일자: " + list.get(i).getDate().toString() + "</div>");
-            out.println("<div class=\"title\">제목: " + list.get(i).getTitle() + "</div>");
-            out.println("<div class=\"writer\">작성자: " + list.get(i).getWriter() + "</div><br>");
-            out.println("</div>");
-            out.println("<div class=\"content\">내용: " + list.get(i).getContent() + "</div>");
+        for (int i = (currentPage-1)*pageSize; i < currentPage*pageSize; i++) {
+            if(list.size() > i) {
+                out.println("<div class=\"list\">");
+                out.println("<div class=\"number\">번호: " + (i + 1) + "</div>");
+                out.println("<div class=\"date\">일자: " + list.get(i).getDate().toString() + "</div>");
+                out.println("<div class=\"title\">제목: " + list.get(i).getTitle() + "</div>");
+                out.println("<div class=\"writer\">작성자: " + list.get(i).getWriter() + "</div><br>");
+                out.println("</div>");
+                out.println("<div class=\"content\">내용: " + list.get(i).getContent() + "</div>");
+            }else {
+                break;
+            }
         }
     %>
 
@@ -45,7 +49,7 @@
         <img class=minus-btn src="../img/minus.png" alt="minusBtn">
         <%}%>
         <div class=page-num><%=currentPage%></div>
-        <% if(list.size() == pageSize) { %>
+        <% if((currentPage*pageSize) < list.size()) { %>
         <% nextPage = currentPage + 1; %>
         <img class=plus-btn src="../img/plusBtn.png" onclick="location.href='?page=<%= nextPage %>'" alt="plusBtn">
         <% }else {%>

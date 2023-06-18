@@ -21,7 +21,7 @@
 <div class="content">
     <div class="content-title">
         <div class="logo">
-
+            <img class="bicycle-logo" src="../img/bicycle_oos.png" alt="logo">
         </div>
         <div class="title">
          기장군 공영자전거 무인대여 시스템

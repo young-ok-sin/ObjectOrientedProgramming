@@ -14,7 +14,7 @@
 <body>
 <div class="header-layout">
     <img class="my-logo" src="../img/bicycleLogo.png" alt="my-logo">
-    <a href="../Member/RegisterPage.jsp">회원 관리</a>
+    <a href="../User/GetInfo.jsp">회원 관리</a>
     <a href="../Rent/BicycleRent.jsp">대여 관리</a>
     <a href="../Notice/NoticePage.jsp">공지 관리</a>
     <a href="../Management/ChoosePage.jsp">운영 관리</a>
