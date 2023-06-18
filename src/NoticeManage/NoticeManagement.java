@@ -48,16 +48,10 @@ public class NoticeManagement {
     }
 
     public List<Notice> inquiryNoticeAll(int pageNum) {
-        String query = "SELECT * FROM notice ORDERS LIMIT ?,?";
-        int pageSize = 5; // 페이지당 행의 수
-        int pageNumber = pageNum; // 페이지 번호
+        String query = "SELECT * FROM notice ORDER BY noticeID DESC";
         List<Notice> list = new ArrayList<>();
         try {
             PreparedStatement pstmt = connectMyDB.getConnection().prepareStatement(query);
-            pstmt.setInt(1, (pageNumber - 1) * pageSize); // OFFSET의 값 설정
-            pstmt.setInt(2, pageSize); // LIMIT의 값 설정
-
-
             ResultSet resultset = pstmt.executeQuery();
 
             while(resultset.next()) {
